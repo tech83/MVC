@@ -1,0 +1,514 @@
+.first {
+    background-color: #fe0000;
+    float: left;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.firstdivbutton {
+    float: right;
+    margin: 0 auto;
+    max-width: 38%;
+    padding-top: 3%;
+    width: 100%;
+}
+
+    .firstdivbutton ul {
+        float: right;
+        list-style-type: none;
+        margin: 0 auto;
+        padding-left: 0;
+        width: 100%;
+    }
+
+        .firstdivbutton ul li {
+            background-color: #fff;
+            float: left;
+            margin: 0 auto 0 5%;
+            text-align: center;
+            width: 45%;
+        }
+
+            .firstdivbutton ul li a {
+                background-color: #fff;
+                float: left;
+                padding: 9%;
+                border: 1px solid #fe0000;
+                text-align: center;
+                width: 100%;
+                color: #000;
+            }
+
+.nav li a:hover {
+    border: 1px solid #fff;
+}
+
+.firstdivbutton ul li a:hover {
+    background-color: #fe0000;
+    color: #fff;
+    border: 1px solid #fff;
+    text-decoration: none;
+}
+
+.checktext {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.seconddivformouter {
+    background-color: #f0eeef;
+    float: left;
+    margin: 0 auto;
+    padding: 5%;
+    width: 100%;
+}
+
+.img-responsive.home {
+    display: block;
+    width: 100%;
+    height: 700px;
+}
+
+.img-responsive {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.navbar-header.firstdivlogoinventory {
+    padding: 10px 0;
+}
+
+    .navbar-header.firstdivlogoinventory a img {
+        width: 100%;
+        float: left;
+        margin: 0 auto;
+    }
+
+.img-responsive.signin {
+    display: block;
+    max-width: 100%;
+    height: 614px;
+    width: 100%;
+    float: left;
+}
+
+.firstdivbuttoninventort .navbar {
+    background-color: initial;
+    margin-bottom: 0px;
+    border: none;
+}
+
+.navigationinventory {
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 11px;
+}
+
+    .navigationinventory .nav li {
+        padding: 0px 8px 8px;
+    }
+
+        .navigationinventory .nav li a {
+            position: relative;
+            display: block;
+            background-color: #fff;
+            padding: 10px 11px;
+            border: 1px solid #fff;
+        }
+
+            .navigationinventory .nav li a:hover {
+                background-color: #fe0000;
+            }
+
+        .navigationinventory .nav li:last-child a {
+            background-color: initial;
+            border: none;
+        }
+
+        .navigationinventory .nav li:first-child a {
+            margin-left: 0px;
+        }
+
+        .navigationinventory .nav li a i {
+            font-size: 24px;
+        }
+
+    .navigationinventory .navbar-collapse {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+
+.secondouterdiv {
+    float: left;
+    margin: 0 auto;
+    padding: 2% 0;
+    width: 100%;
+}
+
+.seconddivform2-2 input:first-child {
+    float: left;
+    margin-right: 10%;
+    margin-top: 2%;
+    width: 45%;
+}
+
+.seconddivform2-2 input:last-child {
+    float: left;
+    margin-top: 2%;
+    width: 45%;
+}
+
+.seconddivform3-2 > input {
+    margin-top: 2%;
+    width: 100%;
+}
+
+.seconddivform3-1 .inputsubmit {
+    background-color: #fe0000;
+    border: 1px solid #fe0000;
+    color: #fff;
+    float: left;
+    font-size: 20px;
+    padding: 3%;
+    margin-top: 10%;
+    text-align: center;
+    width: 100%;
+}
+
+.seconddivform6-2 > input {
+    max-width: 26%;
+    padding-left: 5px;
+    margin-top: 2%;
+}
+
+.seconddivform1 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+
+.seconddivform2 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+
+.seconddivform3 {
+    float: left;
+    margin: 0 auto;
+    padding-top: 2%;
+    width: 100%;
+}
+
+.seconddivform6 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+
+.seconddivform4 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+
+.seconddivform6-2 select {
+    padding: 1%;
+    margin-top: 2%;
+}
+
+.seconddivform3-1 label {
+    margin-top: 4%;
+    font-size: 10px;
+}
+
+    .seconddivform3-1 label input {
+        margin-right: 5%;
+        margin-top: 0%;
+    }
+
+.third {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fe0000;
+    float: left;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.thirddiv {
+    text-align: center;
+    color: #fff;
+    padding: 1%;
+}
+
+    .thirddiv p {
+        margin-bottom: 0px;
+    }
+
+   .saletablesaledate tr td {
+    padding: 7px;
+}
+/*table.saletablesaledate tr td {
+    padding: 7px;
+}*/
+
+.formiconsfacebook a {
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+    padding: 3% 3% 3% 0%;
+    background-color: #4865a1;
+    font-size: 12px;
+    color: #fff;
+}
+
+    .formiconsfacebook a:hover {
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+.formiconsgoogle a:hover {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.formiconsgoogle a {
+    width: 100%;
+    float: left;
+    margin-bottom: 5px;
+    font-size: 12px;
+    padding: 3% 3% 3% 0%;
+    background-color: #fe0000;
+    color: #fff;
+}
+
+.formiconsfacebook a i {
+    padding: 0 5%;
+    border-right: 1px solid #fff;
+    margin-right: 2%;
+}
+
+.formiconsgoogle a i {
+    padding: 0 2% 0% 4%;
+    border-right: 1px solid #fff;
+    margin-right: 2%;
+}
+
+
+
+table#tbl1 {
+    padding-bottom: 4%;
+}
+
+
+.navbar-header.firstdivlogoinventory a i {
+    display: none;
+}
+
+
+.dropbtn {
+    position: relative;
+    display: flex;
+}
+
+li.reportdropdown.dropbtn {
+    padding: 15px 20px;
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+.dropbtn:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn:hover {
+    background-color: #fe0000;
+}
+
+.reportdropdown.dropbtn span {
+    float: right;
+    text-align: right;
+    padding-left: 30px;
+}
+
+.sale {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+}
+
+.saleheading h2 {
+    width: 100%;
+    float: left;
+    color: #fff;
+    padding: 7px;
+    /* margin: 0 auto; */
+    background-color: #777;
+}
+
+.tablesale tr td input {
+    width: 80px;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .firstdivbutton {
+        padding-top: 4.2%;
+    }
+
+    .seconddivform3-1 label {
+        margin-top: 10%;
+    }
+
+
+    .seconddivform3-1 .inputsubmit {
+        margin-top: 19%;
+    }
+
+    .firstdivbutton {
+        max-width: 44%;
+    }
+
+    .navbar-header.firstdivlogoinventory a i {
+        display: none;
+    }
+
+    .navigationinventory .nav li {
+        padding: 0px 4px 8px;
+    }
+
+        .navigationinventory .nav li a {
+            padding: 10px 8px;
+            font-size: 12px;
+        }
+}
+
+@media only screen and (max-width: 991px) {
+
+    .firstdivbutton {
+        padding-top: 5%;
+    }
+
+    .firstdivbutton {
+        max-width: 55%;
+    }
+
+    .navigationinventory {
+        width: 100%;
+        float: left;
+        margin-top: 16px;
+    }
+
+        .navigationinventory .nav li {
+            padding: 0px 2px 8px;
+        }
+
+            .navigationinventory .nav li a {
+                padding: 10px 5px;
+                font-size: 11px;
+            }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .firstdivbutton ul {
+        margin-bottom: 5px;
+    }
+
+    .seconddivform6-2 select {
+        padding: 3px;
+    }
+
+    .img-responsive.signin, .img-responsive.home {
+        height: auto;
+    }
+
+    .formiconsfacebook a i {
+        padding: 0 12px;
+        border-right: 1px solid #fff;
+        margin-right: 1%;
+    }
+
+    .formiconsgoogle a i {
+        padding: 0 5px 0% 10px;
+        border-right: 1px solid #fff;
+        margin-right: 1%;
+    }
+
+    .firstdivbutton {
+        max-width: 55%;
+        float: initial;
+    }
+
+    .firstdivlogo {
+        width: 100%;
+        float: initial;
+        margin: 0 auto;
+        max-width: 60%;
+    }
+
+        .firstdivlogo img {
+            width: 100%;
+            margin: 0 auto;
+            float: initial;
+        }
+
+    .seconddivform3-1 .inputsubmit {
+        margin-top: 9%;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .navigationinventory .nav li a {
+        padding: 10px 12px;
+    }
+
+    .navigationinventory {
+        width: 100%;
+        float: left;
+        margin-top: 16px;
+        padding-left: 4%;
+    }
+
+        .navigationinventory .nav li a {
+            margin-left: 0px;
+        }
+
+    .navbar-header.firstdivlogoinventory a i {
+        float: right;
+        padding: 3%;
+        font-size: 29px;
+        color: #fff;
+        display: initial;
+    }
+}

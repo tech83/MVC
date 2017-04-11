@@ -1,0 +1,81 @@
+﻿@model List<ERPOLD.Models.TBITEMMASTERDETAIL>
+<table class="table" id="Table1">
+    <tr>
+        <td>Item</td>
+        <td>Size</td>
+        <td>Barcode</td>
+        <td>BasicRate</td>
+        <td>PurchaseRate</td>
+        <td>SaleRate</td>
+        <td>MRP</td>
+    </tr>
+  
+    <tr class="tr_clone">
+
+        <td>
+            @Html.DropDownListFor(x => x.SIZEID, (SelectList)ViewBag.SizeidList, "SelectCategory", new { @id = "SIZEID"  })
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.BARCODE, new { @id = "BARCODE" })
+
+        </td>
+        <td>
+            @*<input type="text" id="BASICRATE+'@j'" name="BASICRATE">*@
+            @Html.TextBoxFor(x => x.BASICRATE, new { @id = "BASICRATE"  })
+        </td>
+        <td>
+            @*<input type="text" id="PURRATE+'@j'" name="PURRATE">*@
+            @Html.TextBoxFor(x => x.PURRATE, new { @id = "PURRATE"  })
+        </td>
+        <td>
+            @*<input type="text" id="SALERATE+'@j'" name="SALERATE">*@
+            @Html.TextBoxFor(x => x.SALERATE, new { @id = "SALERATE"  })
+        </td>
+        <td>
+            @*<input type="text" id="MRP+'@j'" name="MRP">*@
+            @Html.TextBoxFor(x => x.MRP, new { @id = "MRP" })
+        </td>
+        <td>
+            <input id="addButton" type="button" name="name" value="+" />
+        </td>
+    </tr>
+    @*@if (Model != null && Model.Count > 0)
+{
+    int j = 0;
+    foreach (var i in Model)
+    {
+        <tr class="tr_clone">
+
+            <td>
+                @Html.DropDownListFor(x => x[j].SIZEID, (SelectList)ViewBag.SizeidList, "SelectCategory", new { @id = "SIZEID" + j })
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x[j].BARCODE, new { @id = "BARCODE" })
+
+            </td>
+            <td>
+                @*<input type="text" id="BASICRATE+'@j'" name="BASICRATE">*@
+                @Html.TextBoxFor(x => x[j].BASICRATE, new { @id = "BASICRATE" + j })
+            </td>
+            <td>
+                @*<input type="text" id="PURRATE+'@j'" name="PURRATE">*@
+                @Html.TextBoxFor(x => x[j].PURRATE, new { @id = "PURRATE" + j })
+            </td>
+            <td>
+                @*<input type="text" id="SALERATE+'@j'" name="SALERATE">*@
+                @Html.TextBoxFor(x => x[j].SALERATE, new { @id = "SALERATE" + j })
+            </td>
+            <td>
+                @*<input type="text" id="MRP+'@j'" name="MRP">*@
+                @Html.TextBoxFor(x => x[j].MRP, new { @id = "MRP" + j })
+            </td>
+            <td>
+                <input id="addButton" type="button" name="name" value="+" />
+            </td>
+        </tr>
+        j++;
+    }
+}*@
+
+
+</table>

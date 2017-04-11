@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ERPOldModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ERPOld.dbo.CashReceipt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CashReceipt">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountHeadCode" Type="int" />
+          <Property Name="OpeningBal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerHead" Type="int" />
+          <Property Name="Voucher" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBACCOUNTMASTER">
+          <Key>
+            <PropertyRef Name="ACCOUNTID" />
+          </Key>
+          <Property Name="ACCOUNTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACCOUNTNAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="ACCOUNTTYPEID" Type="int" />
+          <Property Name="OPENING BALANCE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OPENINGTYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="BSIDPOSITIVE" Type="int" />
+          <Property Name="BSIDNEGATIVE" Type="int" />
+          <Property Name="ADDRESS1" Type="nvarchar" MaxLength="250" />
+          <Property Name="ADDRESS2" Type="nvarchar" MaxLength="250" />
+          <Property Name="ADDRESS3" Type="nvarchar" MaxLength="250" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="250" />
+          <Property Name="TINNO" Type="nvarchar" MaxLength="250" />
+          <Property Name="MOBILENO" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TBACCOUNTTYPEMASTER">
+          <Key>
+            <PropertyRef Name="ACCOUNTTYPEID" />
+          </Key>
+          <Property Name="ACCOUNTTYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACCOUNTTYPENAME" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TBBALANCESHEETGROUP">
+          <Key>
+            <PropertyRef Name="BALANCESHEETGRPID" />
+          </Key>
+          <Property Name="BALANCESHEETGRPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BALANCESHEETGROUPNM" Type="nvarchar" MaxLength="250" />
+          <Property Name="BALANCESHEETGROUPTYPE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBCASHPAYMENT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountHeadCode" Type="int" />
+          <Property Name="OpeningBal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerHead" Type="int" />
+          <Property Name="Voucher" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBCASHRECEIPT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountHeadCode" Type="int" />
+          <Property Name="OpeningBal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerHead" Type="int" />
+          <Property Name="Voucher" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBCHEQUERECEIPT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountHeadCode" Type="int" />
+          <Property Name="OpeningBal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerHead" Type="int" />
+          <Property Name="Voucher" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBCHQPAYMENT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountHeadCode" Type="int" />
+          <Property Name="OpeningBal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="CustomerHead" Type="int" />
+          <Property Name="Voucher" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBCREDIT">
+          <Key>
+            <PropertyRef Name="CreditID" />
+          </Key>
+          <Property Name="CreditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FNEntryCode" Type="int" />
+          <Property Name="STType" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadCode" Type="int" />
+          <Property Name="FDAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FDDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBCUSTOMER">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TBDEBIT">
+          <Key>
+            <PropertyRef Name="DebitID" />
+          </Key>
+          <Property Name="DebitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FNEntryCode" Type="int" />
+          <Property Name="STType" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadCode" Type="int" />
+          <Property Name="FNAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FNDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBITEMMASTERDETAIL">
+          <Key>
+            <PropertyRef Name="ItemMasterDetailId" />
+          </Key>
+          <Property Name="ItemMasterDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEMID" Type="int" />
+          <Property Name="SIZEID" Type="int" />
+          <Property Name="BARCODE" Type="nvarchar" MaxLength="250" />
+          <Property Name="BASICRATE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PURRATE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SALERATE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBITEMMASTERHEADER">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEMNAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="BRANDID" Type="int" />
+          <Property Name="ITEMGROUPID" Type="int" />
+          <Property Name="PURTAXID" Type="int" />
+          <Property Name="SALETAXID" Type="int" />
+        </EntityType>
+        <EntityType Name="TblBrand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblItemGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblSizeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBPURCHASEDETAILS">
+          <Key>
+            <PropertyRef Name="PurDetailID" />
+          </Key>
+          <Property Name="PurDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="SizeID" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseAC" Type="int" />
+          <Property Name="PurchaseTaxAc" Type="int" />
+          <Property Name="SurChargeAC" Type="int" />
+          <Property Name="Tax1AC" Type="int" />
+          <Property Name="Tax2AC" Type="int" />
+          <Property Name="SurCharge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SurChargeVal" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBPURCHASEHEADER">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurDate" Type="datetime" />
+          <Property Name="BillDate" Type="datetime" />
+          <Property Name="BillNo" Type="int" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACCOUNTID" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="TBSALE">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="Billdate" Type="datetime" />
+          <Property Name="BillNo" Type="int" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="PurchaseId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="SizeId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseAC" Type="int" />
+          <Property Name="PurchaseTaxAC" Type="int" />
+          <Property Name="SurChargeAC" Type="int" />
+          <Property Name="Tax1AC" Type="int" />
+          <Property Name="Tax2AC" Type="int" />
+        </EntityType>
+        <EntityType Name="TBSALEDETAIL">
+          <Key>
+            <PropertyRef Name="SaleDetailId" />
+          </Key>
+          <Property Name="SaleDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleId" Type="int" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="SizeId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SaleAC" Type="int" />
+          <Property Name="SaleTaxAC" Type="int" />
+          <Property Name="SurchargeAC" Type="int" />
+          <Property Name="Tax1AC" Type="int" />
+          <Property Name="Tax2AC" Type="int" />
+          <Property Name="SurCharge" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SurChargeVal" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBSALEHEADER">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleDate" Type="datetime" />
+          <Property Name="BillDate" Type="datetime" />
+          <Property Name="BillNo" Type="int" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="TBSTOCK">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" />
+          <Property Name="SizeId" Type="int" />
+          <Property Name="STType" Type="nvarchar" MaxLength="50" />
+          <Property Name="EntryCode" Type="int" />
+          <Property Name="FDDate" Type="datetime" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBTAXCONFIG">
+          <Key>
+            <PropertyRef Name="TAXID" />
+          </Key>
+          <Property Name="TAXID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TAXNAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="SALE/PURACCOUNT" Type="int" />
+          <Property Name="SALETAXCALCULATION" Type="nvarchar" MaxLength="50" />
+          <Property Name="SALES/PURTAXACCOUNT" Type="int" />
+          <Property Name="SURCHARGEACCOUNT" Type="int" />
+          <Property Name="TAX1ACCOUNT" Type="int" />
+          <Property Name="TAX2ACCOUNT" Type="int" />
+          <Property Name="TAX1%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TAX2%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TAX3%" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SURONTAX3" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TAXTYPE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="accountLedgers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ACCOUNTID" Type="int" Mode="In" />
+          <Parameter Name="FROMDATE" Type="datetime" Mode="In" />
+          <Parameter Name="TODATE" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="trialbalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="trialbalancereport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="decimal" Mode="In" />
+        </Function>
+        <EntityContainer Name="ERPOldModelStoreContainer">
+          <EntitySet Name="TBACCOUNTMASTER" EntityType="Self.TBACCOUNTMASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBACCOUNTTYPEMASTER" EntityType="Self.TBACCOUNTTYPEMASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBBALANCESHEETGROUP" EntityType="Self.TBBALANCESHEETGROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCASHPAYMENT" EntityType="Self.TBCASHPAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCASHRECEIPT" EntityType="Self.TBCASHRECEIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCHEQUERECEIPT" EntityType="Self.TBCHEQUERECEIPT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCHQPAYMENT" EntityType="Self.TBCHQPAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCREDIT" EntityType="Self.TBCREDIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBCUSTOMER" EntityType="Self.TBCUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBDEBIT" EntityType="Self.TBDEBIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBITEMMASTERDETAIL" EntityType="Self.TBITEMMASTERDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBITEMMASTERHEADER" EntityType="Self.TBITEMMASTERHEADER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblItemGroup" EntityType="Self.TblItemGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSizeMaster" EntityType="Self.TblSizeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBPURCHASEDETAILS" EntityType="Self.TBPURCHASEDETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBPURCHASEHEADER" EntityType="Self.TBPURCHASEHEADER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBSALE" EntityType="Self.TBSALE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBSALEDETAIL" EntityType="Self.TBSALEDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBSALEHEADER" EntityType="Self.TBSALEHEADER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBSTOCK" EntityType="Self.TBSTOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBTAXCONFIG" EntityType="Self.TBTAXCONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CashReceipt" EntityType="Self.CashReceipt" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CashReceipt].[SerialNo] AS [SerialNo], 
+    [CashReceipt].[AccountHeadCode] AS [AccountHeadCode], 
+    [CashReceipt].[OpeningBal] AS [OpeningBal], 
+    [CashReceipt].[Date] AS [Date], 
+    [CashReceipt].[CustomerHead] AS [CustomerHead], 
+    [CashReceipt].[Voucher] AS [Voucher], 
+    [CashReceipt].[Amount] AS [Amount], 
+    [CashReceipt].[Discount] AS [Discount], 
+    [CashReceipt].[Narration] AS [Narration]
+    FROM [dbo].[CashReceipt] AS [CashReceipt]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERPOldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBACCOUNTMASTER">
+          <Key>
+            <PropertyRef Name="ACCOUNTID" />
+          </Key>
+          <Property Name="ACCOUNTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACCOUNTNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNTTYPEID" Type="Int32" />
+          <Property Name="OPENING_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OPENINGTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BSIDPOSITIVE" Type="Int32" />
+          <Property Name="BSIDNEGATIVE" Type="Int32" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TINNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MOBILENO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBACCOUNTTYPEMASTER">
+          <Key>
+            <PropertyRef Name="ACCOUNTTYPEID" />
+          </Key>
+          <Property Name="ACCOUNTTYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACCOUNTTYPENAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBBALANCESHEETGROUP">
+          <Key>
+            <PropertyRef Name="BALANCESHEETGRPID" />
+          </Key>
+          <Property Name="BALANCESHEETGRPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BALANCESHEETGROUPNM" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BALANCESHEETGROUPTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBCASHPAYMENT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHeadCode" Type="Int32" />
+          <Property Name="OpeningBal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerHead" Type="Int32" />
+          <Property Name="Voucher" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBCASHRECEIPT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHeadCode" Type="Int32" />
+          <Property Name="OpeningBal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerHead" Type="Int32" />
+          <Property Name="Voucher" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBCHEQUERECEIPT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHeadCode" Type="Int32" />
+          <Property Name="OpeningBal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerHead" Type="Int32" />
+          <Property Name="Voucher" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBCHQPAYMENT">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHeadCode" Type="Int32" />
+          <Property Name="OpeningBal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerHead" Type="Int32" />
+          <Property Name="Voucher" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBCREDIT">
+          <Key>
+            <PropertyRef Name="CreditID" />
+          </Key>
+          <Property Name="CreditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FNEntryCode" Type="Int32" />
+          <Property Name="STType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadCode" Type="Int32" />
+          <Property Name="FDAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FDDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBCUSTOMER">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBDEBIT">
+          <Key>
+            <PropertyRef Name="DebitID" />
+          </Key>
+          <Property Name="DebitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FNEntryCode" Type="Int32" />
+          <Property Name="STType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadCode" Type="Int32" />
+          <Property Name="FNAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FNDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBITEMMASTERDETAIL">
+          <Key>
+            <PropertyRef Name="ItemMasterDetailId" />
+          </Key>
+          <Property Name="ItemMasterDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITEMID" Type="Int32" />
+          <Property Name="SIZEID" Type="Int32" />
+          <Property Name="BARCODE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BASICRATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PURRATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SALERATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBITEMMASTERHEADER">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITEMNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BRANDID" Type="Int32" />
+          <Property Name="ITEMGROUPID" Type="Int32" />
+          <Property Name="PURTAXID" Type="Int32" />
+          <Property Name="SALETAXID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TblBrand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblItemGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblSizeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBPURCHASEDETAIL">
+          <Key>
+            <PropertyRef Name="PurDetailID" />
+          </Key>
+          <Property Name="PurDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseId" Type="Int32" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="SizeID" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseAC" Type="Int32" />
+          <Property Name="PurchaseTaxAc" Type="Int32" />
+          <Property Name="SurChargeAC" Type="Int32" />
+          <Property Name="Tax1AC" Type="Int32" />
+          <Property Name="Tax2AC" Type="Int32" />
+          <Property Name="SurCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SurChargeVal" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBPURCHASEHEADER">
+          <Key>
+            <PropertyRef Name="PurchaseId" />
+          </Key>
+          <Property Name="PurchaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurDate" Type="DateTime" Precision="3" />
+          <Property Name="BillDate" Type="DateTime" Precision="3" />
+          <Property Name="BillNo" Type="Int32" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNTID" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBSALE">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="Billdate" Type="DateTime" Precision="3" />
+          <Property Name="BillNo" Type="Int32" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="PurchaseId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="SizeId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseAC" Type="Int32" />
+          <Property Name="PurchaseTaxAC" Type="Int32" />
+          <Property Name="SurChargeAC" Type="Int32" />
+          <Property Name="Tax1AC" Type="Int32" />
+          <Property Name="Tax2AC" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBSALEDETAIL">
+          <Key>
+            <PropertyRef Name="SaleDetailId" />
+          </Key>
+          <Property Name="SaleDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="SizeId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PurchaseRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MRP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Cd" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Td" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TdVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax1Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax2Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tax3Val" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SaleAC" Type="Int32" />
+          <Property Name="SaleTaxAC" Type="Int32" />
+          <Property Name="SurchargeAC" Type="Int32" />
+          <Property Name="Tax1AC" Type="Int32" />
+          <Property Name="Tax2AC" Type="Int32" />
+          <Property Name="SurCharge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SurChargeVal" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBSALEHEADER">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleDate" Type="DateTime" Precision="3" />
+          <Property Name="BillDate" Type="DateTime" Precision="3" />
+          <Property Name="BillNo" Type="Int32" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBSTOCK">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" />
+          <Property Name="SizeId" Type="Int32" />
+          <Property Name="STType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EntryCode" Type="Int32" />
+          <Property Name="FDDate" Type="DateTime" Precision="3" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBTAXCONFIG">
+          <Key>
+            <PropertyRef Name="TAXID" />
+          </Key>
+          <Property Name="TAXID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TAXNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SALE_PURACCOUNT" Type="Int32" />
+          <Property Name="SALETAXCALCULATION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SALES_PURTAXACCOUNT" Type="Int32" />
+          <Property Name="SURCHARGEACCOUNT" Type="Int32" />
+          <Property Name="TAX1ACCOUNT" Type="Int32" />
+          <Property Name="TAX2ACCOUNT" Type="Int32" />
+          <Property Name="TAX1_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TAX2_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TAX3_" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SURONTAX3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TAXTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CashReceipt">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountHeadCode" Type="Int32" />
+          <Property Name="OpeningBal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="CustomerHead" Type="Int32" />
+          <Property Name="Voucher" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Narration" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ERPOldEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBACCOUNTMASTERs" EntityType="Self.TBACCOUNTMASTER" />
+          <EntitySet Name="TBACCOUNTTYPEMASTERs" EntityType="Self.TBACCOUNTTYPEMASTER" />
+          <EntitySet Name="TBBALANCESHEETGROUPs" EntityType="Self.TBBALANCESHEETGROUP" />
+          <EntitySet Name="TBCASHPAYMENTs" EntityType="Self.TBCASHPAYMENT" />
+          <EntitySet Name="TBCASHRECEIPTs" EntityType="Self.TBCASHRECEIPT" />
+          <EntitySet Name="TBCHEQUERECEIPTs" EntityType="Self.TBCHEQUERECEIPT" />
+          <EntitySet Name="TBCHQPAYMENTs" EntityType="Self.TBCHQPAYMENT" />
+          <EntitySet Name="TBCREDITs" EntityType="Self.TBCREDIT" />
+          <EntitySet Name="TBCUSTOMERs" EntityType="Self.TBCUSTOMER" />
+          <EntitySet Name="TBDEBITs" EntityType="Self.TBDEBIT" />
+          <EntitySet Name="TBITEMMASTERDETAILs" EntityType="Self.TBITEMMASTERDETAIL" />
+          <EntitySet Name="TBITEMMASTERHEADERs" EntityType="Self.TBITEMMASTERHEADER" />
+          <EntitySet Name="TblBrands" EntityType="Self.TblBrand" />
+          <EntitySet Name="TblItemGroups" EntityType="Self.TblItemGroup" />
+          <EntitySet Name="TblSizeMasters" EntityType="Self.TblSizeMaster" />
+          <EntitySet Name="TBPURCHASEDETAILS" EntityType="Self.TBPURCHASEDETAIL" />
+          <EntitySet Name="TBPURCHASEHEADERs" EntityType="Self.TBPURCHASEHEADER" />
+          <EntitySet Name="TBSALEs" EntityType="Self.TBSALE" />
+          <EntitySet Name="TBSALEDETAILs" EntityType="Self.TBSALEDETAIL" />
+          <EntitySet Name="TBSALEHEADERs" EntityType="Self.TBSALEHEADER" />
+          <EntitySet Name="TBSTOCKs" EntityType="Self.TBSTOCK" />
+          <EntitySet Name="TBTAXCONFIGs" EntityType="Self.TBTAXCONFIG" />
+          <EntitySet Name="CashReceipts" EntityType="Self.CashReceipt" />
+          <FunctionImport Name="accountLedgers" ReturnType="Collection(ERPOldModel.accountLedgers_Result)" >
+            <Parameter Name="ACCOUNTID" Mode="In" Type="Int32" />
+            <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="TODATE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="trialbalance" ReturnType="Collection(ERPOldModel.trialbalance_Result)" />
+          <FunctionImport Name="trialbalancereport" ReturnType="Collection(ERPOldModel.trialbalancereport_Result)">
+          <Parameter Name="Id" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="accountLedgers_Result">
+          <Property Type="Int64" Name="ID" Nullable="true" />
+          <Property Type="Int32" Name="ACCOUNTID" Nullable="false" />
+          <Property Type="String" Name="ACCOUNTNAME" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Ids" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="trialbalance_Result">
+          <Property Type="Int32" Name="ACCOUNTID" Nullable="false" />
+          <Property Type="String" Name="ACCOUNTNAME" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="trialbalancereport_Result">
+          <Property Type="Int32" Name="ACCOUNTID" Nullable="false" />
+          <Property Type="String" Name="ACCOUNTNAME" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Ids" Nullable="false" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="CreditID" Nullable="false" />
+          <Property Type="Int32" Name="FNEntryCode" Nullable="true" />
+          <Property Type="String" Name="STType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HeadCode" Nullable="true" />
+          <Property Type="Decimal" Name="FDAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="FDDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERPOldModelStoreContainer" CdmEntityContainer="ERPOldEntities">
+          <EntitySetMapping Name="TBACCOUNTMASTERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBACCOUNTMASTER">
+              <MappingFragment StoreEntitySet="TBACCOUNTMASTER">
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+                <ScalarProperty Name="ACCOUNTTYPEID" ColumnName="ACCOUNTTYPEID" />
+                <ScalarProperty Name="OPENING_BALANCE" ColumnName="OPENING BALANCE" />
+                <ScalarProperty Name="OPENINGTYPE" ColumnName="OPENINGTYPE" />
+                <ScalarProperty Name="BSIDPOSITIVE" ColumnName="BSIDPOSITIVE" />
+                <ScalarProperty Name="BSIDNEGATIVE" ColumnName="BSIDNEGATIVE" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TINNO" ColumnName="TINNO" />
+                <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBACCOUNTTYPEMASTERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBACCOUNTTYPEMASTER">
+              <MappingFragment StoreEntitySet="TBACCOUNTTYPEMASTER">
+                <ScalarProperty Name="ACCOUNTTYPEID" ColumnName="ACCOUNTTYPEID" />
+                <ScalarProperty Name="ACCOUNTTYPENAME" ColumnName="ACCOUNTTYPENAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBBALANCESHEETGROUPs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBBALANCESHEETGROUP">
+              <MappingFragment StoreEntitySet="TBBALANCESHEETGROUP">
+                <ScalarProperty Name="BALANCESHEETGRPID" ColumnName="BALANCESHEETGRPID" />
+                <ScalarProperty Name="BALANCESHEETGROUPNM" ColumnName="BALANCESHEETGROUPNM" />
+                <ScalarProperty Name="BALANCESHEETGROUPTYPE" ColumnName="BALANCESHEETGROUPTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCASHPAYMENTs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCASHPAYMENT">
+              <MappingFragment StoreEntitySet="TBCASHPAYMENT">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AccountHeadCode" ColumnName="AccountHeadCode" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerHead" ColumnName="CustomerHead" />
+                <ScalarProperty Name="Voucher" ColumnName="Voucher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCASHRECEIPTs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCASHRECEIPT">
+              <MappingFragment StoreEntitySet="TBCASHRECEIPT">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AccountHeadCode" ColumnName="AccountHeadCode" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerHead" ColumnName="CustomerHead" />
+                <ScalarProperty Name="Voucher" ColumnName="Voucher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCHEQUERECEIPTs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCHEQUERECEIPT">
+              <MappingFragment StoreEntitySet="TBCHEQUERECEIPT">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AccountHeadCode" ColumnName="AccountHeadCode" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerHead" ColumnName="CustomerHead" />
+                <ScalarProperty Name="Voucher" ColumnName="Voucher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCHQPAYMENTs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCHQPAYMENT">
+              <MappingFragment StoreEntitySet="TBCHQPAYMENT">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AccountHeadCode" ColumnName="AccountHeadCode" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerHead" ColumnName="CustomerHead" />
+                <ScalarProperty Name="Voucher" ColumnName="Voucher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCREDITs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCREDIT">
+              <MappingFragment StoreEntitySet="TBCREDIT">
+                <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+                <ScalarProperty Name="FNEntryCode" ColumnName="FNEntryCode" />
+                <ScalarProperty Name="STType" ColumnName="STType" />
+                <ScalarProperty Name="HeadCode" ColumnName="HeadCode" />
+                <ScalarProperty Name="FDAmount" ColumnName="FDAmount" />
+                <ScalarProperty Name="FDDate" ColumnName="FDDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBCUSTOMERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBCUSTOMER">
+              <MappingFragment StoreEntitySet="TBCUSTOMER">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBDEBITs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBDEBIT">
+              <MappingFragment StoreEntitySet="TBDEBIT">
+                <ScalarProperty Name="DebitID" ColumnName="DebitID" />
+                <ScalarProperty Name="FNEntryCode" ColumnName="FNEntryCode" />
+                <ScalarProperty Name="STType" ColumnName="STType" />
+                <ScalarProperty Name="HeadCode" ColumnName="HeadCode" />
+                <ScalarProperty Name="FNAmount" ColumnName="FNAmount" />
+                <ScalarProperty Name="FNDate" ColumnName="FNDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBITEMMASTERDETAILs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBITEMMASTERDETAIL">
+              <MappingFragment StoreEntitySet="TBITEMMASTERDETAIL">
+                <ScalarProperty Name="ItemMasterDetailId" ColumnName="ItemMasterDetailId" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="SIZEID" ColumnName="SIZEID" />
+                <ScalarProperty Name="BARCODE" ColumnName="BARCODE" />
+                <ScalarProperty Name="BASICRATE" ColumnName="BASICRATE" />
+                <ScalarProperty Name="PURRATE" ColumnName="PURRATE" />
+                <ScalarProperty Name="SALERATE" ColumnName="SALERATE" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBITEMMASTERHEADERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBITEMMASTERHEADER">
+              <MappingFragment StoreEntitySet="TBITEMMASTERHEADER">
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+                <ScalarProperty Name="BRANDID" ColumnName="BRANDID" />
+                <ScalarProperty Name="ITEMGROUPID" ColumnName="ITEMGROUPID" />
+                <ScalarProperty Name="PURTAXID" ColumnName="PURTAXID" />
+                <ScalarProperty Name="SALETAXID" ColumnName="SALETAXID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblBrands">
+            <EntityTypeMapping TypeName="ERPOldModel.TblBrand">
+              <MappingFragment StoreEntitySet="TblBrand">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblItemGroups">
+            <EntityTypeMapping TypeName="ERPOldModel.TblItemGroup">
+              <MappingFragment StoreEntitySet="TblItemGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSizeMasters">
+            <EntityTypeMapping TypeName="ERPOldModel.TblSizeMaster">
+              <MappingFragment StoreEntitySet="TblSizeMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBPURCHASEDETAILS">
+            <EntityTypeMapping TypeName="ERPOldModel.TBPURCHASEDETAIL">
+              <MappingFragment StoreEntitySet="TBPURCHASEDETAILS">
+                <ScalarProperty Name="PurDetailID" ColumnName="PurDetailID" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="BaseRate" ColumnName="BaseRate" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="SaleRate" ColumnName="SaleRate" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="GAmount" ColumnName="GAmount" />
+                <ScalarProperty Name="Cd" ColumnName="Cd" />
+                <ScalarProperty Name="Td" ColumnName="Td" />
+                <ScalarProperty Name="CdVal" ColumnName="CdVal" />
+                <ScalarProperty Name="TdVal" ColumnName="TdVal" />
+                <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+                <ScalarProperty Name="Tax2" ColumnName="Tax2" />
+                <ScalarProperty Name="Tax3" ColumnName="Tax3" />
+                <ScalarProperty Name="Tax1Val" ColumnName="Tax1Val" />
+                <ScalarProperty Name="Tax2Val" ColumnName="Tax2Val" />
+                <ScalarProperty Name="Tax3Val" ColumnName="Tax3Val" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="PurchaseAC" ColumnName="PurchaseAC" />
+                <ScalarProperty Name="PurchaseTaxAc" ColumnName="PurchaseTaxAc" />
+                <ScalarProperty Name="SurChargeAC" ColumnName="SurChargeAC" />
+                <ScalarProperty Name="Tax1AC" ColumnName="Tax1AC" />
+                <ScalarProperty Name="Tax2AC" ColumnName="Tax2AC" />
+                <ScalarProperty Name="SurCharge" ColumnName="SurCharge" />
+                <ScalarProperty Name="SurChargeVal" ColumnName="SurChargeVal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBPURCHASEHEADERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBPURCHASEHEADER">
+              <MappingFragment StoreEntitySet="TBPURCHASEHEADER">
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="PurDate" ColumnName="PurDate" />
+                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSALEs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBSALE">
+              <MappingFragment StoreEntitySet="TBSALE">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Billdate" ColumnName="Billdate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="PurchaseId" ColumnName="PurchaseId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="BaseRate" ColumnName="BaseRate" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="SaleRate" ColumnName="SaleRate" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="GAmount" ColumnName="GAmount" />
+                <ScalarProperty Name="Cd" ColumnName="Cd" />
+                <ScalarProperty Name="Td" ColumnName="Td" />
+                <ScalarProperty Name="CdVal" ColumnName="CdVal" />
+                <ScalarProperty Name="TdVal" ColumnName="TdVal" />
+                <ScalarProperty Name="Tax1_" ColumnName="Tax1%" />
+                <ScalarProperty Name="Tax2_" ColumnName="Tax2%" />
+                <ScalarProperty Name="Tax3_" ColumnName="Tax3%" />
+                <ScalarProperty Name="Tax1Val" ColumnName="Tax1Val" />
+                <ScalarProperty Name="Tax2Val" ColumnName="Tax2Val" />
+                <ScalarProperty Name="Tax3Val" ColumnName="Tax3Val" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="PurchaseAC" ColumnName="PurchaseAC" />
+                <ScalarProperty Name="PurchaseTaxAC" ColumnName="PurchaseTaxAC" />
+                <ScalarProperty Name="SurChargeAC" ColumnName="SurChargeAC" />
+                <ScalarProperty Name="Tax1AC" ColumnName="Tax1AC" />
+                <ScalarProperty Name="Tax2AC" ColumnName="Tax2AC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSALEDETAILs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBSALEDETAIL">
+              <MappingFragment StoreEntitySet="TBSALEDETAIL">
+                <ScalarProperty Name="SaleDetailId" ColumnName="SaleDetailId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="BaseRate" ColumnName="BaseRate" />
+                <ScalarProperty Name="PurchaseRate" ColumnName="PurchaseRate" />
+                <ScalarProperty Name="SaleRate" ColumnName="SaleRate" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="GAmount" ColumnName="GAmount" />
+                <ScalarProperty Name="Cd" ColumnName="Cd" />
+                <ScalarProperty Name="Td" ColumnName="Td" />
+                <ScalarProperty Name="CdVal" ColumnName="CdVal" />
+                <ScalarProperty Name="TdVal" ColumnName="TdVal" />
+                <ScalarProperty Name="Tax1" ColumnName="Tax1" />
+                <ScalarProperty Name="Tax2" ColumnName="Tax2" />
+                <ScalarProperty Name="Tax3" ColumnName="Tax3" />
+                <ScalarProperty Name="Tax1Val" ColumnName="Tax1Val" />
+                <ScalarProperty Name="Tax2Val" ColumnName="Tax2Val" />
+                <ScalarProperty Name="Tax3Val" ColumnName="Tax3Val" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="SaleAC" ColumnName="SaleAC" />
+                <ScalarProperty Name="SaleTaxAC" ColumnName="SaleTaxAC" />
+                <ScalarProperty Name="SurchargeAC" ColumnName="SurchargeAC" />
+                <ScalarProperty Name="Tax1AC" ColumnName="Tax1AC" />
+                <ScalarProperty Name="Tax2AC" ColumnName="Tax2AC" />
+                <ScalarProperty Name="SurCharge" ColumnName="SurCharge" />
+                <ScalarProperty Name="SurChargeVal" ColumnName="SurChargeVal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSALEHEADERs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBSALEHEADER">
+              <MappingFragment StoreEntitySet="TBSALEHEADER">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+                <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBSTOCKs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBSTOCK">
+              <MappingFragment StoreEntitySet="TBSTOCK">
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+                <ScalarProperty Name="STType" ColumnName="STType" />
+                <ScalarProperty Name="EntryCode" ColumnName="EntryCode" />
+                <ScalarProperty Name="FDDate" ColumnName="FDDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBTAXCONFIGs">
+            <EntityTypeMapping TypeName="ERPOldModel.TBTAXCONFIG">
+              <MappingFragment StoreEntitySet="TBTAXCONFIG">
+                <ScalarProperty Name="TAXID" ColumnName="TAXID" />
+                <ScalarProperty Name="TAXNAME" ColumnName="TAXNAME" />
+                <ScalarProperty Name="SALE_PURACCOUNT" ColumnName="SALE/PURACCOUNT" />
+                <ScalarProperty Name="SALETAXCALCULATION" ColumnName="SALETAXCALCULATION" />
+                <ScalarProperty Name="SALES_PURTAXACCOUNT" ColumnName="SALES/PURTAXACCOUNT" />
+                <ScalarProperty Name="SURCHARGEACCOUNT" ColumnName="SURCHARGEACCOUNT" />
+                <ScalarProperty Name="TAX1ACCOUNT" ColumnName="TAX1ACCOUNT" />
+                <ScalarProperty Name="TAX2ACCOUNT" ColumnName="TAX2ACCOUNT" />
+                <ScalarProperty Name="TAX1_" ColumnName="TAX1%" />
+                <ScalarProperty Name="TAX2_" ColumnName="TAX2%" />
+                <ScalarProperty Name="TAX3_" ColumnName="TAX3%" />
+                <ScalarProperty Name="SURONTAX3" ColumnName="SURONTAX3" />
+                <ScalarProperty Name="TAXTYPE" ColumnName="TAXTYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashReceipts">
+            <EntityTypeMapping TypeName="ERPOldModel.CashReceipt">
+              <MappingFragment StoreEntitySet="CashReceipt">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="AccountHeadCode" ColumnName="AccountHeadCode" />
+                <ScalarProperty Name="OpeningBal" ColumnName="OpeningBal" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CustomerHead" ColumnName="CustomerHead" />
+                <ScalarProperty Name="Voucher" ColumnName="Voucher" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="accountLedgers" FunctionName="ERPOldModel.Store.accountLedgers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERPOldModel.accountLedgers_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+                <ScalarProperty Name="Ids" ColumnName="Ids" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="trialbalance" FunctionName="ERPOldModel.Store.trialbalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERPOldModel.trialbalance_Result">
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="trialbalancereport" FunctionName="ERPOldModel.Store.trialbalancereport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERPOldModel.trialbalancereport_Result">
+                <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+                <ScalarProperty Name="ACCOUNTNAME" ColumnName="ACCOUNTNAME" />
+                <ScalarProperty Name="Ids" ColumnName="Ids" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+                <ScalarProperty Name="FNEntryCode" ColumnName="FNEntryCode" />
+                <ScalarProperty Name="STType" ColumnName="STType" />
+                <ScalarProperty Name="HeadCode" ColumnName="HeadCode" />
+                <ScalarProperty Name="FDAmount" ColumnName="FDAmount" />
+                <ScalarProperty Name="FDDate" ColumnName="FDDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

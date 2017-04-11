@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ERP</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+   
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/getmeinstant.css" rel="stylesheet" />
+    
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="outerbody">
+        <div class="first">
+            <div class="container">
+                <div class="row">
+                    <div class="fisrtouterdiv">
+                        <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                            <div class="firstdivlogo">
+                                @*<img src="images/login1.png">*@
+                                <img src="/Content/images/login1.png" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+                            <div class="firstdivbutton">
+                                <ul>
+                                    <li><a href='@Url.Action("Index", "Inventory")'>Inventory</a></li>
+                                    @*<li><a href='@Url.Action("PurchaseHeader", "Purchase")'>Purchase</a></li>
+                                    <li><a href='@Url.Action("CustomerIndex", "Customer")'>Customer </a></li>*@ 
+                                    <li><a href="#">Sign in </a></li>
+                                    <li><a href="#">Sign up</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="second">
+            <div class="container">
+                <div class="row">
+                    <div class="secondouterdiv">
+                        <div class="seconddivimage">
+                            <div class="col-xs-12 col-md-9 col-sm-8 col-lg-9">
+                                <div class="seconddivimage1">
+                                    
+                                    <img src="/Content/images/divimg.jpg" class="img-responsive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seconddivform">
+                            <div class="col-xs-12 col-md-3 col-sm-4 col-lg-3">
+                                <div class="seconddivformouter">
+                                    <form>
+                                        <div class="seconddivform1">
+                                            <div class="row">
+                                                <div class="check1 col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                    <label><input type="checkbox"> <span class="checktext">User</span></label>
+                                                </div>
+                                                <div class="check2  col-xs-6 col-md-6 col-sm-6 col-lg-6">
+                                                    <label><input type="checkbox"><span class="checktext"> Admin</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="seconddivform2">
+                                            <div class="seconddivform2-1">
+                                                Name
+                                            </div>
+                                            <div class="seconddivform2-2">
+                                                <input type="text" placeholder="name"><input type="text" placeholder="lastname">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                Email address
+                                            </div>
+                                            <div class="seconddivform3-2">
+                                                <input type="email" placeholder="abc.com">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform4">
+                                            <div class="seconddivform3-1">
+                                                Creat a password
+                                            </div>
+                                            <div class="seconddivform3-2">
+                                                <input type="text" placeholder="abc.com">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                Confirm a password
+                                            </div>
+                                            <div class="seconddivform3-2">
+                                                <input type="text" placeholder="abc.com">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform6">
+                                            <div class="seconddivform6-1">
+                                                Date of birth
+                                            </div>
+                                            <div class="seconddivform6-2">
+                                                <select>
+                                                    <option> january</option>
+                                                    <option> febuary</option>
+                                                    <option> march</option>
+                                                    <option> april</option>
+                                                    <option> may</option>
+                                                    <option> june</option>
+                                                    <option> july</option>
+                                                    <option> augest</option>
+                                                    <option> september</option>
+                                                    <option> october</option>
+                                                    <option> november</option>
+                                                    <option> december</option>
+                                                </select>
+                                                <input type="text" placeholder="day">
+                                                <input type="text" placeholder="year">
+
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                Mobile phone
+                                            </div>
+                                            <div class="seconddivform3-2">
+                                                <input type="text" placeholder="abc.com">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                location
+                                            </div>
+                                            <div class="seconddivform3-2">
+                                                <input type="text" placeholder="abc.com">
+                                            </div>
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                <label><input type="checkbox">  sjdhg usy dcusgdu csud chs dugs dgsjhgcjs dcjhsgdcj sdjc sd cjsgdcsghu</label>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="seconddivform3">
+                                            <div class="seconddivform3-1">
+                                                <input type="submit" class="inputsubmit" value="submit">
+                                            </div>
+
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="third">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+                        <div class="thirddiv">
+
+                            <p>GETMEINSTANT <i class="fa fa-copyright" aria-hidden="true"></i> 2017/ All Rights Reserved</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+
+
+</html>

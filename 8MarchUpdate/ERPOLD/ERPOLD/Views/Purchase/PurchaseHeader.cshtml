@@ -1,0 +1,532 @@
+﻿@model ERPOLD.Models.ViewModel.PurachaseDeatil
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Purchase";
+    var todaydate = ViewBag.Date;
+}
+
+<div class="sale">
+    <div class="container">
+        <div class="row">
+            <div class="saleheading"><h2>Purchase</h2></div>
+
+
+            <li>@Html.ActionLink("PurchaseDetail", "PurchaseDetail", "Purchase")</li>
+            <li>@Html.ActionLink("Stock", "Stock", "Purchase")</li>
+            <li>@Html.ActionLink("Debit", "Debit", "Purchase")</li>
+            <li>@Html.ActionLink("Credit", "Credit", "Purchase")</li>
+            <li>@Html.ActionLink("Sale", "Sale", "Purchase")</li>
+            <li>@Html.ActionLink("SaleHeader", "SaleHeader", "Purchase")</li>
+
+
+            @using (Html.BeginForm("PurchaseHeaderSaveChanges", "Purchase", FormMethod.Post, new {@id="form"}))
+            {
+
+                <table class="saletablesaledate">
+                    @Html.HiddenFor(x => x.PurchaseId)
+                    <tr>
+                        <td>Purchase Date</td>
+                        <td>
+                            <input data-val="true" data-val-date="The field PurDate must be a date." id="PurDate" name="PurDate" placeholder="DD/MM/YYYY" type="text" value="@todaydate.ToString("dd/MM/yyyy")">
+                            @*@Html.TextBoxFor(x => x.PurDate, new { placeholder = "DD/MM/YYYY" })*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bill Date</td>
+                        <td>
+                            <input data-val="true" data-val-date="The field BillDate must be a date." id="BillDate" name="BillDate" placeholder="DD/MM/YYYY" type="text" value="@todaydate.ToString("dd/MM/yyyy")">
+                            @*@Html.TextBoxFor(x => x.BillDate, new { placeholder = "DD/MM/YYYY" })*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bill No</td>
+                        <td>@Html.TextBoxFor(x => x.BillNo, new { @style = "text-transform:uppercase" })</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Mode</td>
+                        <td>
+                            @Html.DropDownList("PaymentMode", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="Cash", Value = "0" },
+                    new SelectListItem{ Text="Credit", Value = "1" },
+                    new SelectListItem{ Text="CreditCard", Value = "2" }
+                 })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Account</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.ACCOUNTID, (SelectList)ViewBag.AccountIdList, "-Select-")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Customer</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.CustomerId, (SelectList)ViewBag.CustomerIdList, "-Select-")
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <table class="table" id="Table1">
+                    <tr>
+                        @*<td>Purchase</td>*@
+                        <td>Item</td>
+                        <td>Size</td>
+                        <td>Quantity</td>
+                        <td>Base Rate</td>
+                        <td>Purchase Rate</td>
+                        <td>Sale Rate</td>
+                        <td>MRP</td>
+                        <td>CD</td>
+                        <td>Gross Amount</td>
+                        @*<td>Net Amount</td>
+                            <td>Purchase Account</td>
+                            <td>Purchase TaxAccount</td>
+                            <td>Surcharge Account</td>
+                            <td>Tax1 Account</td>
+                            <td>Tax2 Account</td>*@
+
+                    </tr>
+                    @{int j = 0;}
+                    @Html.HiddenFor(x => x.purachasedetail[j].PurDetailID)
+                    <tr>
+
+                        @*<td>
+                                @Html.DropDownListFor(x => x.TBPURCHASEDETAIL[j].PurchaseId, (SelectList)ViewBag.PurchaseIdList, "-Select-")
+                            </td>*@
+
+
+                        <td>
+                            @Html.DropDownListFor(x => x.purachasedetail[j].ItemID, (SelectList)ViewBag.ItemIdList, "-Select-", new { @class = "common", onchange = "GetSize(this)" })
+                        </td>
+
+
+                        <td>
+                            @Html.DropDownListFor(x => x.purachasedetail[j].SizeID, (SelectList)ViewBag.SizeIdList, "-Select-", new { onchange = "GetRate(this)" })
+                        </td>
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].Quantity, new { onblur = "GetCal(this)" })
+                            @*@Html.DropDownList("PaymentMode", new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Cash", Value = "0" },
+                                   new SelectListItem{ Text="Credit", Value = "1" },
+                                   new SelectListItem{ Text="CreditCard", Value = "2" }
+                                })*@
+
+                        </td>
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].BaseRate, new { onblur = "GetCal(this)" })
+                        </td>
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].PurchaseRate)
+                        </td>
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].SaleRate)
+                        </td>
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].MRP)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].Cd)
+                        </td>
+
+                        <td>
+                            @Html.TextBoxFor(x => x.purachasedetail[j].GAmount, new { @readonly = "readonly" })
+                        </td>
+
+
+                        @*<td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].NetAmount)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].PurchaseAC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].PurchaseTaxAc)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].SurChargeAC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].Tax1AC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.purachasedetail[j].Tax2AC)
+                            </td>*@
+                        <td>
+                            <input id="addButton" type="button" name="name" value="+" />
+                        </td>
+                    </tr>
+
+
+
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @if (Model == null)
+                            {
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            }
+                            else
+                            {
+                                <input type="submit" value="Update" class="btn btn-default" />
+                            }
+                            <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                            <a class="btn btn-default" href='@Url.Action("PurchaseHeader", "Purchase")'>New </a>
+                            
+                            <input id="btnbill" class="btn btn-default" type="button" name="name" value="Bill Amount " onclick="getbilling();" />
+                        </td>
+                        <td>Bill Amount</td>
+                        <td>
+                            <input type=text id="billamount" value="0" readonly="readonly" />
+                        </td>
+                    </tr>
+                </table>
+            }
+
+            <table class="table" id="tbl1" style="display:none">
+                <tr>
+                    <th>
+                        Purchase Date
+                    </th>
+                    <th>
+                        Bill Date
+                    </th>
+
+                    <th>
+                        Bill No
+                    </th>
+                    <th>
+                        Payment Mode
+                    </th>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        Customer
+                    </th>
+
+                </tr>
+
+                @foreach (var item in ViewBag.PurchaseHeaderList)
+                {
+                    <tr>
+
+                        <td>
+                            @item.PurDate
+                        </td>
+                        <td>
+                            @item.BillDate
+                        </td>
+
+                        <td>
+                            @item.BillNo
+                        </td>
+                        <td>
+                            @item.PaymentMode
+                        </td>
+
+                        <td>
+                            @item.ACCOUNTID
+                        </td>
+                        <td>
+                            @item.CustomerId
+                        </td>
+
+
+                        <td>
+                            @Html.ActionLink("Edit", "EditPurchaseHeader", new { id = item.PurchaseId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.PurchaseId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.PurchaseId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+
+
+
+        });
+        $("#ACCOUNTID").change(function () {
+            if ($("#PaymentMode option:selected").text() == "Credit") {
+                $("#CustomerId").val($("#ACCOUNTID option:selected").val());
+
+            }
+
+        });
+
+        $("#PurDate").keyup(function () {
+            if ($(this).val().length == 2 || $(this).val().length == 5) {
+                $(this).val($(this).val() + "/");
+            }
+        });
+        $("#BillDate").keyup(function () {
+            if ($(this).val().length == 2 || $(this).val().length == 5) {
+                $(this).val($(this).val() + "/");
+            }
+        });
+
+        var id = 1;
+        $("#addButton").click(function () {
+
+            var newRow = '<tr>';
+            newRow += '<td><select data-val="true" style="width: 73px;"  id="purachasedetail[' + id + '].ItemID" name="purachasedetail[' + id + '].ItemID" onchange="GetSize(this)"></select></td>';
+            newRow += '<td><select data-val="true" style="width: 83px;"data-val-number="The field SIZEID must be a number." id="purachasedetail[' + id + '].SizeID" name="purachasedetail[' + id + '].SizeID" onchange="GetRate(this)"></select></td>';
+            // newRow += '<td><select data-val="true" style="width: 107px;"data-val-number="The field SIZEID must be a number." id="SIZEID' + id + '" name="purachasedetail[' + id + '].SIZEID"></select></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].Quantity"   name="purachasedetail[' + id + '].Quantity" type="text" value=""  onblur="GetCal(this)"></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].BaseRate"   name="purachasedetail[' + id + '].BaseRate" type="text" value=""   onblur="GetCal(this)"></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].PurchaseRate"   name="purachasedetail[' + id + '].PurchaseRate" type="text" value=""></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].SaleRate"   name="purachasedetail[' + id + '].SaleRate" type="text" value=""></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].MRP"   name="purachasedetail[' + id + '].MRP" type="text" value=""></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].Cd"   name="purachasedetail[' + id + '].Cd" type="text" value=""></td>';
+            newRow += '<td><input id="purachasedetail[' + id + '].GAmount"   name="purachasedetail[' + id + '].GAmount" type="text" value="" readonly = "readonly"></td>';
+
+            //newRow += '<td><input id="purachasedetail[' + id + '].PurchaseAC"   name="purachasedetail[' + id + '].PurchaseAC" type="text" value=""></td>';
+            //newRow += '<td><input id="purachasedetail[' + id + '].PurchaseTaxAc"   name="purachasedetail[' + id + '].PurchaseTaxAc" type="text" value=""></td>';
+            //newRow += '<td><input id="purachasedetail[' + id + '].SurChargeAC"   name="purachasedetail[' + id + '].SurChargeAC" type="text" value=""></td>';
+            //newRow += '<td><input id="purachasedetail[' + id + '].Tax1AC"   name="purachasedetail[' + id + '].Tax1AC" type="text" value=""></td>';
+            //newRow += '<td><input id="purachasedetail[' + id + '].Tax2AC"   name="purachasedetail[' + id + '].Tax2AC" type="text" value=""></td>';
+            newRow += ' <td> <input class="BtnMinus" type="button" name="name" value="-" /></td>';
+            newRow += ' </tr>';
+            $(newRow).appendTo($("#Table1"));
+
+            $.ajax({
+                url: "@Url.Action("GetSize", "Purchase")",
+                data: { Id: 0 },
+                dataType: "json",
+                type: "GET",
+                error: function () {
+                    alert(" An error occurred.");
+                },
+                success: function (data) {
+
+                    var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+
+                    $("select[name='purachasedetail[" + (id - 1) + "].SizeID']").append(optionhtml1);
+
+
+                    $.each(data, function (i) {
+                        var optionhtml = '<option value="' +
+                    data[i].Id + '">' + data[i].Name + '</option>';
+                        $("select[name='purachasedetail[" + (id - 1) + "].SizeID']").append(optionhtml);
+                    });
+                }
+            });
+            $.ajax({
+                url: "@Url.Action("GetItem", "Purchase")",
+                data: {},
+                dataType: "json",
+                type: "GET",
+                error: function () {
+                    alert(" An error occurred.");
+                },
+                success: function (data) {
+                    var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+                    $("select[name='purachasedetail[" + (id - 1) + "].ItemID']").append(optionhtml1);
+
+
+                    $.each(data, function (i) {
+                        var optionhtml = '<option value="' +
+
+                   data[i].ITEMID + '">' + data[i].ITEMNAME + '</option>';
+                        $("select[name='purachasedetail[" + (id - 1) + "].ItemID']").append(optionhtml);
+                    });
+                }
+            });
+            id = id + 1;
+
+
+
+        });
+        function deleteRow() {
+            var par = $(this).parent().parent();
+            par.remove();
+        };
+        $("#Table1").on("click", ".BtnMinus", deleteRow);
+        @*$(".common").change(function (event) {
+            var res = event.target.name;
+
+            var selected = $("select[name='" + res + "']  option:selected").val();
+            alert(selected);
+            res = res.split('.')[0];
+            //$("select[name=" + res + ".SizeID  option:selected")
+
+            //alert("Field " + res + " changed" + selected);
+
+            $.ajax({
+                url: "@Url.Action("GetSize", "Purchase")",
+                data: { Id: selected },
+            dataType: "json",
+            type: "GET",
+            error: function () {
+                alert(" An error occurred.");
+            },
+            success: function (data) {
+
+                var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+
+                $().append(optionhtml1);
+
+
+                $.each(data, function (i) {
+                    var optionhtml = '<option value="' +
+                data[i].Id + '">' + data[i].Name + '</option>';
+                    $("select[name=" + res + ".SizeID").append(optionhtml);
+                });
+            }
+        });
+        });*@
+
+    });
+
+    function getbilling()
+    {
+        var data = $('#form').serialize();
+        $.ajax({
+            url: "@Url.Action("Getbillingamount", "Purchase")",
+            data: data,
+        dataType: "json",
+        type: "GET",
+        error: function () {
+            alert(" An error occurred.");
+        },
+        success: function (data) {
+
+            $("#billamount").val(data);
+        }
+    });
+    }
+
+    function GetSize(event) {
+
+
+
+        var res = $(event).attr('name');
+
+        var selected = $("select[name='" + res + "']  option:selected").val();
+
+
+
+        res = res.split('.')[0];
+        $("input[name='" + res + ".BaseRate']").val('');
+        $("input[name='" + res + ".PurchaseRate']").val('');
+        $("input[name='" + res + ".SaleRate']").val('');
+        $("input[name='" + res + ".MRP']").val('');
+
+        // alert("select[name='" + res + ".SizeID']");
+        $("select[name='" + res + ".SizeID']").empty();
+        $.ajax({
+            url: "@Url.Action("GetSize", "Purchase")",
+            data: { Id: selected },
+            dataType: "json",
+            type: "GET",
+            error: function () {
+                alert(" An error occurred.");
+            },
+            success: function (data) {
+
+                var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+
+                $("select[name='" + res + ".SizeID']").append(optionhtml1);
+
+
+                $.each(data, function (i) {
+                    var optionhtml = '<option value="' +
+                data[i].Id + '">' + data[i].Name + '</option>';
+                    $("select[name='" + res + ".SizeID']").append(optionhtml);
+                });
+            }
+        });
+
+    }
+    function GetRate(event) {
+        debugger;
+        var res = $(event).attr('name');
+
+        var selectedsize = $("select[name='" + res + "']  option:selected").val();
+
+
+        res = res.split('.')[0];
+        var selecteditem = $("select[name='" + res + ".ItemID'] option:selected").val();
+
+        $.ajax({
+            url: "@Url.Action("GetRate", "Purchase")",
+            data: { itemId: selecteditem, Sizeid: selectedsize },
+            dataType: "json",
+            type: "GET",
+            error: function () {
+                alert(" An error occurred.");
+            },
+            success: function (data) {
+
+                $("input[name='" + res + ".BaseRate']").val(data.BASICRATE);
+                $("input[name='" + res + ".PurchaseRate']").val(data.PURRATE);
+                $("input[name='" + res + ".SaleRate']").val(data.SALERATE);
+                $("input[name='" + res + ".MRP']").val(data.MRP);
+
+
+
+            }
+        });
+
+    }
+    function GetCal(event) {
+
+        var res = $(event).attr('name');
+
+        res = res.split('.')[0];
+
+        var quantity = $("input[name='" + res + ".Quantity']").val();
+        // alert(quantity);
+        var baserate = $("input[name='" + res + ".BaseRate']").val();
+        var gaamount = quantity * baserate;
+
+        $("input[name='" + res + ".GAmount']").val(gaamount);
+
+
+    }
+</script>

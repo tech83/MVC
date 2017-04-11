@@ -1,0 +1,198 @@
+﻿@model ERPOLD.Models.ViewModel.TBTAXConfigVM
+@{
+    ViewBag.Title = "PurchaseTaxConfig";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="sale">
+    <div class="container">
+        <div class="row">
+            <div class="saleheading"><h2>Purchase TaxConfig</h2></div>
+
+
+            @using (Html.BeginForm("TaxConfigSaveChanges", "Inventory", FormMethod.Post))
+            {
+                <table class="saletablesaledate">
+                    @Html.HiddenFor(x => x.TAXID)
+                    <tr>
+                        <td>Name</td>
+                        <td>@Html.TextBoxFor(x => x.TAXNAME, new { @style = "text-transform:uppercase" })  @Html.ValidationMessageFor(x => x.TAXNAME)</td>
+
+                    </tr>
+                    <tr>
+                        <td>Purchase PurAccount</td>
+                        <td> @Html.DropDownListFor(x => x.SALE_PURACCOUNT, (SelectList)ViewBag.TaxSalePurList, "Select")</td>
+                    </tr>
+                    <tr>
+                        <td>Purchase TaxCalculation</td>
+                        <td>
+                            @Html.DropDownList("SALETAXCALCULATION", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="YES", Value = "1" },
+                    new SelectListItem{ Text="NO", Value = "0" }
+                 })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Purchase PurTaxAccount</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.SALES_PURTAXACCOUNT, (SelectList)ViewBag.SalePurTaxAccountList, "Select")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>SurCharge Account</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.SURCHARGEACCOUNT, (SelectList)ViewBag.SurchargeAccountList, "Select")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tax1Account</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.TAX1ACCOUNT, (SelectList)ViewBag.Tax1AccountList, "Select")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tax2Account</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.TAX2ACCOUNT, (SelectList)ViewBag.Tax2AccountList, "Select")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tax1</td>
+                        <td>@Html.TextBoxFor(x => x.TAX1_)</td>
+                    </tr>
+                    <tr>
+                        <td>Tax2</td>
+                        <td>@Html.TextBoxFor(x => x.TAX2_)</td>
+                    </tr>
+                    <tr>
+                        <td>Tax3</td>
+                        <td>@Html.TextBoxFor(x => x.TAX3_)</td>
+                    </tr>
+                    <tr>
+                        <td>SuronTax</td>
+                        <td>@Html.TextBoxFor(x => x.SURONTAX3)</td>
+                        <input id="TAXTYPE" name="TAXTYPE" type="hidden" value="PUR">
+                    </tr>
+                    @*<tr>
+                            <td>Tax Type</td>
+                            <td>@Html.TextBoxFor(x => x.TAXTYPE)</td>
+                        </tr>*@
+                    <tr>
+                        <td></td>
+                        <td>
+                            @if (Model == null)
+                            {
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            }
+                            else
+                            {
+                                if (Model.TAXID > 0)
+                                {
+                                    <input type="submit" value="Update" class="btn btn-default" />
+                                }
+                                else
+                                {
+                                    <input type="submit" value="Save" class="btn btn-default" />
+                                }
+
+                            }
+                            <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                            <a class="btn btn-default" href='@Url.Action("Index", "Inventory")'>Back </a>
+                        </td>
+                    </tr>
+                </table>
+            }
+
+            <table class="table" id="tbl1" style="display:none">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+
+                    <th>Purchase TaxCalculation</th>
+                    <th>
+                        Purchase PurTaxAccount
+                    </th>
+
+                    <th>Tax1Account</th>
+                    <th>
+                        Tax2Account
+                    </th>
+
+                    <th>
+                        Tax1
+                    </th>
+                    <th>
+                        Tax2
+                    </th>
+                    <th>
+                        Tax3
+                    </th>
+                    <th>SuronTax</th>
+                    @*<th>Tax Type</th>*@
+                </tr>
+
+                @foreach (var item in ViewBag.TaxConfigList)
+                {
+                    <tr>
+                        <td>
+                            @item.TAXNAME
+                        </td>
+
+
+                        <td>
+                            @item.SALETAXCALCULATION
+                        </td>
+
+                        <td>
+                            @item.SALES_PURTAXACCOUNT
+                        </td>
+
+                        <td>
+                            @item.TAX1ACCOUNT
+                        </td>
+
+                        <td>
+                            @item.TAX2ACCOUNT
+                        </td>
+
+                        <td>@item.TAX1_</td>
+                        <td>@item.TAX2_</td>
+                        <td>@item.TAX3_</td>
+                        <td>@item.SURONTAX3</td>
+                        @*<td>@item.TAXTYPE</td>*@
+                        <td>
+                            @Html.ActionLink("Edit", "EditTaxConfig", new { id = item.TAXID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TAXID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TAXID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+        });
+
+
+
+    })
+
+</script>

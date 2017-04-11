@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ERPOldModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TblBrand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBITEMMASTERHEADERs" Relationship="ERPOldModel.fk_BRANDID" FromRole="TblBrand" ToRole="TBITEMMASTERHEADER" />
+  </EntityType>
+  <EntityType Name="TblItemGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBITEMMASTERHEADERs" Relationship="ERPOldModel.fk_ITEMGROUPID" FromRole="TblItemGroup" ToRole="TBITEMMASTERHEADER" />
+  </EntityType>
+  <EntityType Name="TblSizeMaster">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="ERPOldEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TblBrands" EntityType="Self.TblBrand" />
+    <EntitySet Name="TblItemGroups" EntityType="Self.TblItemGroup" />
+    <EntitySet Name="TblSizeMasters" EntityType="Self.TblSizeMaster" />
+    <EntitySet Name="TBACCOUNTMASTERs" EntityType="ERPOldModel.TBACCOUNTMASTER" />
+    <EntitySet Name="TBACCOUNTTYPEMASTERs" EntityType="ERPOldModel.TBACCOUNTTYPEMASTER" />
+    <EntitySet Name="TBBALANCESHEETGROUPs" EntityType="ERPOldModel.TBBALANCESHEETGROUP" />
+    <EntitySet Name="TBITEMMASTERHEADERs" EntityType="ERPOldModel.TBITEMMASTERHEADER" />
+    <EntitySet Name="TBTAXCONFIGs" EntityType="ERPOldModel.TBTAXCONFIG" />
+    <AssociationSet Name="fk_ACCOUNTTYPEID" Association="ERPOldModel.fk_ACCOUNTTYPEID">
+      <End Role="TBACCOUNTTYPEMASTER" EntitySet="TBACCOUNTTYPEMASTERs" />
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_BSIDNEGATIVE" Association="ERPOldModel.fk_BSIDNEGATIVE">
+      <End Role="TBBALANCESHEETGROUP" EntitySet="TBBALANCESHEETGROUPs" />
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_BSIDPOSITIVE" Association="ERPOldModel.fk_BSIDPOSITIVE">
+      <End Role="TBBALANCESHEETGROUP" EntitySet="TBBALANCESHEETGROUPs" />
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SALEPURACCOUNT" Association="ERPOldModel.fk_SALEPURACCOUNT">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SALESPURTAXACCOUNT" Association="ERPOldModel.fk_SALESPURTAXACCOUNT">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SURCHARGEACCOUNT" Association="ERPOldModel.fk_SURCHARGEACCOUNT">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TAX1ACCOUNT" Association="ERPOldModel.fk_TAX1ACCOUNT">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TAX2ACCOUNT" Association="ERPOldModel.fk_TAX2ACCOUNT">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBACCOUNTMASTER_TBACCOUNTMASTER" Association="ERPOldModel.FK_TBACCOUNTMASTER_TBACCOUNTMASTER">
+      <End Role="TBACCOUNTMASTER" EntitySet="TBACCOUNTMASTERs" />
+      <End Role="TBACCOUNTMASTER1" EntitySet="TBACCOUNTMASTERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_BRANDID" Association="ERPOldModel.fk_BRANDID">
+      <End Role="TblBrand" EntitySet="TblBrands" />
+      <End Role="TBITEMMASTERHEADER" EntitySet="TBITEMMASTERHEADERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ITEMGROUPID" Association="ERPOldModel.fk_ITEMGROUPID">
+      <End Role="TblItemGroup" EntitySet="TblItemGroups" />
+      <End Role="TBITEMMASTERHEADER" EntitySet="TBITEMMASTERHEADERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PURTAXID" Association="ERPOldModel.fk_PURTAXID">
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+      <End Role="TBITEMMASTERHEADER" EntitySet="TBITEMMASTERHEADERs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SALETAXID" Association="ERPOldModel.fk_SALETAXID">
+      <End Role="TBTAXCONFIG" EntitySet="TBTAXCONFIGs" />
+      <End Role="TBITEMMASTERHEADER" EntitySet="TBITEMMASTERHEADERs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TBACCOUNTMASTER">
+    <Key>
+      <PropertyRef Name="ACCOUNTID" />
+    </Key>
+    <Property Name="ACCOUNTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ACCOUNTTYPEID" Type="Int32" />
+    <Property Name="OPENING_BALANCE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OPENINGTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BSIDPOSITIVE" Type="Int32" />
+    <Property Name="BSIDNEGATIVE" Type="Int32" />
+    <Property Name="ADDRESS1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ADDRESS3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TINNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MOBILENO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBACCOUNTTYPEMASTER" Relationship="ERPOldModel.fk_ACCOUNTTYPEID" FromRole="TBACCOUNTMASTER" ToRole="TBACCOUNTTYPEMASTER" />
+    <NavigationProperty Name="TBBALANCESHEETGROUP" Relationship="ERPOldModel.fk_BSIDNEGATIVE" FromRole="TBACCOUNTMASTER" ToRole="TBBALANCESHEETGROUP" />
+    <NavigationProperty Name="TBBALANCESHEETGROUP1" Relationship="ERPOldModel.fk_BSIDPOSITIVE" FromRole="TBACCOUNTMASTER" ToRole="TBBALANCESHEETGROUP" />
+    <NavigationProperty Name="TBTAXCONFIGs" Relationship="ERPOldModel.fk_SALEPURACCOUNT" FromRole="TBACCOUNTMASTER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBTAXCONFIGs1" Relationship="ERPOldModel.fk_SALESPURTAXACCOUNT" FromRole="TBACCOUNTMASTER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBTAXCONFIGs2" Relationship="ERPOldModel.fk_SURCHARGEACCOUNT" FromRole="TBACCOUNTMASTER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBTAXCONFIGs3" Relationship="ERPOldModel.fk_TAX1ACCOUNT" FromRole="TBACCOUNTMASTER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBTAXCONFIGs4" Relationship="ERPOldModel.fk_TAX2ACCOUNT" FromRole="TBACCOUNTMASTER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBACCOUNTMASTER1" Relationship="ERPOldModel.FK_TBACCOUNTMASTER_TBACCOUNTMASTER" FromRole="TBACCOUNTMASTER" ToRole="TBACCOUNTMASTER1" />
+    <NavigationProperty Name="TBACCOUNTMASTER2" Relationship="ERPOldModel.FK_TBACCOUNTMASTER_TBACCOUNTMASTER" FromRole="TBACCOUNTMASTER1" ToRole="TBACCOUNTMASTER" />
+  </EntityType>
+  <EntityType Name="TBACCOUNTTYPEMASTER">
+    <Key>
+      <PropertyRef Name="ACCOUNTTYPEID" />
+    </Key>
+    <Property Name="ACCOUNTTYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ACCOUNTTYPENAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBACCOUNTMASTERs" Relationship="ERPOldModel.fk_ACCOUNTTYPEID" FromRole="TBACCOUNTTYPEMASTER" ToRole="TBACCOUNTMASTER" />
+  </EntityType>
+  <EntityType Name="TBBALANCESHEETGROUP">
+    <Key>
+      <PropertyRef Name="BALANCESHEETGRPID" />
+    </Key>
+    <Property Name="BALANCESHEETGRPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BALANCESHEETGROUPNM" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BALANCESHEETGROUPTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBACCOUNTMASTERs" Relationship="ERPOldModel.fk_BSIDNEGATIVE" FromRole="TBBALANCESHEETGROUP" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBACCOUNTMASTERs1" Relationship="ERPOldModel.fk_BSIDPOSITIVE" FromRole="TBBALANCESHEETGROUP" ToRole="TBACCOUNTMASTER" />
+  </EntityType>
+  <EntityType Name="TBITEMMASTERHEADER">
+    <Key>
+      <PropertyRef Name="ITEMID" />
+    </Key>
+    <Property Name="ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ITEMNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BRANDID" Type="Int32" />
+    <Property Name="ITEMGROUPID" Type="Int32" />
+    <Property Name="PURTAXID" Type="Int32" />
+    <Property Name="SALETAXID" Type="Int32" />
+    <NavigationProperty Name="TblBrand" Relationship="ERPOldModel.fk_BRANDID" FromRole="TBITEMMASTERHEADER" ToRole="TblBrand" />
+    <NavigationProperty Name="TblItemGroup" Relationship="ERPOldModel.fk_ITEMGROUPID" FromRole="TBITEMMASTERHEADER" ToRole="TblItemGroup" />
+    <NavigationProperty Name="TBTAXCONFIG" Relationship="ERPOldModel.fk_PURTAXID" FromRole="TBITEMMASTERHEADER" ToRole="TBTAXCONFIG" />
+    <NavigationProperty Name="TBTAXCONFIG1" Relationship="ERPOldModel.fk_SALETAXID" FromRole="TBITEMMASTERHEADER" ToRole="TBTAXCONFIG" />
+  </EntityType>
+  <EntityType Name="TBTAXCONFIG">
+    <Key>
+      <PropertyRef Name="TAXID" />
+    </Key>
+    <Property Name="TAXID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TAXNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SALE_PURACCOUNT" Type="Int32" />
+    <Property Name="SALETAXCALCULATION_yes_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SALES_PURTAXACCOUNT" Type="Int32" />
+    <Property Name="SURCHARGEACCOUNT" Type="Int32" />
+    <Property Name="TAX1ACCOUNT" Type="Int32" />
+    <Property Name="TAX2ACCOUNT" Type="Int32" />
+    <Property Name="TAX1_" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TAX2_" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TAX3_" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SURONTAX3" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TAXTYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBACCOUNTMASTER" Relationship="ERPOldModel.fk_SALEPURACCOUNT" FromRole="TBTAXCONFIG" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBACCOUNTMASTER1" Relationship="ERPOldModel.fk_SALESPURTAXACCOUNT" FromRole="TBTAXCONFIG" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBACCOUNTMASTER2" Relationship="ERPOldModel.fk_SURCHARGEACCOUNT" FromRole="TBTAXCONFIG" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBACCOUNTMASTER3" Relationship="ERPOldModel.fk_TAX1ACCOUNT" FromRole="TBTAXCONFIG" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBACCOUNTMASTER4" Relationship="ERPOldModel.fk_TAX2ACCOUNT" FromRole="TBTAXCONFIG" ToRole="TBACCOUNTMASTER" />
+    <NavigationProperty Name="TBITEMMASTERHEADERs" Relationship="ERPOldModel.fk_PURTAXID" FromRole="TBTAXCONFIG" ToRole="TBITEMMASTERHEADER" />
+    <NavigationProperty Name="TBITEMMASTERHEADERs1" Relationship="ERPOldModel.fk_SALETAXID" FromRole="TBTAXCONFIG" ToRole="TBITEMMASTERHEADER" />
+  </EntityType>
+  <Association Name="fk_ACCOUNTTYPEID">
+    <End Type="ERPOldModel.TBACCOUNTTYPEMASTER" Role="TBACCOUNTTYPEMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTTYPEMASTER">
+        <PropertyRef Name="ACCOUNTTYPEID" />
+      </Principal>
+      <Dependent Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTTYPEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_BSIDNEGATIVE">
+    <End Type="ERPOldModel.TBBALANCESHEETGROUP" Role="TBBALANCESHEETGROUP" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBBALANCESHEETGROUP">
+        <PropertyRef Name="BALANCESHEETGRPID" />
+      </Principal>
+      <Dependent Role="TBACCOUNTMASTER">
+        <PropertyRef Name="BSIDNEGATIVE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_BSIDPOSITIVE">
+    <End Type="ERPOldModel.TBBALANCESHEETGROUP" Role="TBBALANCESHEETGROUP" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBBALANCESHEETGROUP">
+        <PropertyRef Name="BALANCESHEETGRPID" />
+      </Principal>
+      <Dependent Role="TBACCOUNTMASTER">
+        <PropertyRef Name="BSIDPOSITIVE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SALEPURACCOUNT">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBTAXCONFIG">
+        <PropertyRef Name="SALE_PURACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SALESPURTAXACCOUNT">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBTAXCONFIG">
+        <PropertyRef Name="SALES_PURTAXACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SURCHARGEACCOUNT">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBTAXCONFIG">
+        <PropertyRef Name="SURCHARGEACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TAX1ACCOUNT">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBTAXCONFIG">
+        <PropertyRef Name="TAX1ACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TAX2ACCOUNT">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBTAXCONFIG">
+        <PropertyRef Name="TAX2ACCOUNT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBACCOUNTMASTER_TBACCOUNTMASTER">
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER" Multiplicity="1" />
+    <End Type="ERPOldModel.TBACCOUNTMASTER" Role="TBACCOUNTMASTER1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBACCOUNTMASTER">
+        <PropertyRef Name="ACCOUNTID" />
+      </Principal>
+      <Dependent Role="TBACCOUNTMASTER1">
+        <PropertyRef Name="ACCOUNTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_BRANDID">
+    <End Type="ERPOldModel.TblBrand" Role="TblBrand" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBITEMMASTERHEADER" Role="TBITEMMASTERHEADER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBrand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="TBITEMMASTERHEADER">
+        <PropertyRef Name="BRANDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ITEMGROUPID">
+    <End Type="ERPOldModel.TblItemGroup" Role="TblItemGroup" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBITEMMASTERHEADER" Role="TBITEMMASTERHEADER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblItemGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBITEMMASTERHEADER">
+        <PropertyRef Name="ITEMGROUPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PURTAXID">
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBITEMMASTERHEADER" Role="TBITEMMASTERHEADER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBTAXCONFIG">
+        <PropertyRef Name="TAXID" />
+      </Principal>
+      <Dependent Role="TBITEMMASTERHEADER">
+        <PropertyRef Name="PURTAXID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SALETAXID">
+    <End Type="ERPOldModel.TBTAXCONFIG" Role="TBTAXCONFIG" Multiplicity="0..1" />
+    <End Type="ERPOldModel.TBITEMMASTERHEADER" Role="TBITEMMASTERHEADER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBTAXCONFIG">
+        <PropertyRef Name="TAXID" />
+      </Principal>
+      <Dependent Role="TBITEMMASTERHEADER">
+        <PropertyRef Name="SALETAXID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ERPOldModelStoreContainer" CdmEntityContainer="ERPOldEntities">
+    <EntitySetMapping Name="TblBrands">
+      <EntityTypeMapping TypeName="ERPOldModel.TblBrand">
+        <MappingFragment StoreEntitySet="TblBrand">
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblItemGroups">
+      <EntityTypeMapping TypeName="ERPOldModel.TblItemGroup">
+        <MappingFragment StoreEntitySet="TblItemGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSizeMasters">
+      <EntityTypeMapping TypeName="ERPOldModel.TblSizeMaster">
+        <MappingFragment StoreEntitySet="TblSizeMaster">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBACCOUNTMASTERs">
+      <EntityTypeMapping TypeName="ERPOldModel.TBACCOUNTMASTER">
+        <MappingFragment StoreEntitySet="TBACCOUNTMASTER">
+          <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+          <ScalarProperty Name="TINNO" ColumnName="TINNO" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="ADDRESS3" ColumnName="ADDRESS3" />
+          <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+          <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+          <ScalarProperty Name="BSIDNEGATIVE" ColumnName="BSIDNEGATIVE" />
+          <ScalarProperty Name="BSIDPOSITIVE" ColumnName="BSIDPOSITIVE" />
+          <ScalarProperty Name="OPENINGTYPE" ColumnName="OPENINGTYPE" />
+          <ScalarProperty Name="OPENING_BALANCE" ColumnName="OPENING BALANCE" />
+          <ScalarProperty Name="ACCOUNTTYPEID" ColumnName="ACCOUNTTYPEID" />
+          <ScalarProperty Name="ACCOUNTID" ColumnName="ACCOUNTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBACCOUNTTYPEMASTERs">
+      <EntityTypeMapping TypeName="ERPOldModel.TBACCOUNTTYPEMASTER">
+        <MappingFragment StoreEntitySet="TBACCOUNTTYPEMASTER">
+          <ScalarProperty Name="ACCOUNTTYPENAME" ColumnName="ACCOUNTTYPENAME" />
+          <ScalarProperty Name="ACCOUNTTYPEID" ColumnName="ACCOUNTTYPEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBBALANCESHEETGROUPs">
+      <EntityTypeMapping TypeName="ERPOldModel.TBBALANCESHEETGROUP">
+        <MappingFragment StoreEntitySet="TBBALANCESHEETGROUP">
+          <ScalarProperty Name="BALANCESHEETGROUPTYPE" ColumnName="BALANCESHEETGROUPTYPE" />
+          <ScalarProperty Name="BALANCESHEETGROUPNM" ColumnName="BALANCESHEETGROUPNM" />
+          <ScalarProperty Name="BALANCESHEETGRPID" ColumnName="BALANCESHEETGRPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBITEMMASTERHEADERs">
+      <EntityTypeMapping TypeName="ERPOldModel.TBITEMMASTERHEADER">
+        <MappingFragment StoreEntitySet="TBITEMMASTERHEADER">
+          <ScalarProperty Name="SALETAXID" ColumnName="SALETAXID" />
+          <ScalarProperty Name="PURTAXID" ColumnName="PURTAXID" />
+          <ScalarProperty Name="ITEMGROUPID" ColumnName="ITEMGROUPID" />
+          <ScalarProperty Name="BRANDID" ColumnName="BRANDID" />
+          <ScalarProperty Name="ITEMNAME" ColumnName="ITEMNAME" />
+          <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBTAXCONFIGs">
+      <EntityTypeMapping TypeName="ERPOldModel.TBTAXCONFIG">
+        <MappingFragment StoreEntitySet="TBTAXCONFIG">
+          <ScalarProperty Name="TAXTYPE" ColumnName="TAXTYPE" />
+          <ScalarProperty Name="SURONTAX3" ColumnName="SURONTAX3" />
+          <ScalarProperty Name="TAX3_" ColumnName="TAX3%" />
+          <ScalarProperty Name="TAX2_" ColumnName="TAX2%" />
+          <ScalarProperty Name="TAX1_" ColumnName="TAX1%" />
+          <ScalarProperty Name="TAX2ACCOUNT" ColumnName="TAX2ACCOUNT" />
+          <ScalarProperty Name="TAX1ACCOUNT" ColumnName="TAX1ACCOUNT" />
+          <ScalarProperty Name="SURCHARGEACCOUNT" ColumnName="SURCHARGEACCOUNT" />
+          <ScalarProperty Name="SALES_PURTAXACCOUNT" ColumnName="SALES/PURTAXACCOUNT" />
+          <ScalarProperty Name="SALETAXCALCULATION_yes_no" ColumnName="SALETAXCALCULATION yes/no" />
+          <ScalarProperty Name="SALE_PURACCOUNT" ColumnName="SALE/PURACCOUNT" />
+          <ScalarProperty Name="TAXNAME" ColumnName="TAXNAME" />
+          <ScalarProperty Name="TAXID" ColumnName="TAXID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

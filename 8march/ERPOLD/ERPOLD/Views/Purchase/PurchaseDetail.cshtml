@@ -1,0 +1,271 @@
+﻿@model ERPOLD.Models.TBPURCHASEDETAIL
+
+@{
+    ViewBag.Title = "PurchaseDetail";
+}
+
+<h2>PurchaseDetail</h2>
+
+@using (Html.BeginForm("PurchaseDetailSaveChanges", "Purchase", FormMethod.Post))
+{
+
+    <table>
+        @Html.HiddenFor(x => x.PurDetailID)
+        <tr>
+            <td>Purchase</td>
+            <td>
+                @Html.DropDownListFor(x => x.PurchaseId, (SelectList)ViewBag.PurchaseIdList, "-Select-")
+            </td>
+        </tr>
+        <tr>
+            <td>Item</td>
+            <td>
+                @Html.DropDownListFor(x => x.ItemID, (SelectList)ViewBag.ItemIdList, "-Select-")
+            </td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td>
+                @Html.DropDownListFor(x => x.SizeID, (SelectList)ViewBag.SizeIdList, "-Select-")
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>
+                @Html.TextBoxFor(x => x.Quantity)
+                @*@Html.DropDownList("PaymentMode", new List<SelectListItem>
+                    {
+                       new SelectListItem{ Text="Cash", Value = "0" },
+                       new SelectListItem{ Text="Credit", Value = "1" },
+                       new SelectListItem{ Text="CreditCard", Value = "2" }
+                    })*@
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>Base Rate</td>
+            <td>
+                @Html.TextBoxFor(x => x.BaseRate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Purchase Rate</td>
+            <td>
+                @Html.TextBoxFor(x => x.PurchaseRate)
+            </td>
+        </tr>
+        <tr>
+            <td>Sale Rate</td>
+            <td>
+                @Html.TextBoxFor(x => x.SaleRate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>MRP</td>
+            <td>
+                @Html.TextBoxFor(x => x.MRP)
+            </td>
+        </tr>
+        <tr>
+            <td>Gross Amount</td>
+            <td>
+                @Html.TextBoxFor(x => x.GAmount)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Net Amount</td>
+            <td>
+                @Html.TextBoxFor(x => x.NetAmount)
+            </td>
+        </tr>
+        <tr>
+            <td>Purchase Account</td>
+            <td>
+                @Html.TextBoxFor(x => x.PurchaseAC)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Purchase TaxAccount</td>
+            <td>
+                @Html.TextBoxFor(x => x.PurchaseTaxAc)
+            </td>
+        </tr>
+        <tr>
+            <td>Surcharge Account</td>
+            <td>
+                @Html.TextBoxFor(x => x.SurChargeAC)
+            </td>
+        </tr>
+        <tr>
+            <td>Tax1 Account</td>
+            <td>
+                @Html.TextBoxFor(x => x.Tax1AC)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Tax2 Account</td>
+            <td>
+                @Html.TextBoxFor(x => x.Tax2AC)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td>
+                @if (Model == null)
+                {
+                    <input type="submit" value="Create" class="btn btn-default" />
+                }
+                else
+                {
+                    <input type="submit" value="Update" class="btn btn-default" />
+                }
+                <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                <a class="btn btn-default" href='@Url.Action("PurchaseHeader", "Purchase")'>Back </a>
+            </td>
+        </tr>
+    </table>
+}
+
+<table class="table" id="tbl1" style="display:none">
+    <tr>
+        <th>
+            Purchase
+        </th>
+        <th>
+            Item
+        </th>
+
+        <th>
+            Size
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Base Rate
+        </th>
+        <th>
+            Purchase Rate
+        </th>
+        <th>
+            Sale Rate
+        </th>
+        <th>
+            MRP
+        </th>
+        <th>
+            Gross Amount
+        </th>
+        <th>
+            Net Amount
+        </th>
+        <th>
+            Purchase Account
+        </th>
+        <th>
+            Purchase TaxAccount
+        </th>
+        <th>
+            Surcharge Account
+        </th>
+        <th>
+            Tax1 Account
+        </th>
+        <th>
+            Tax2 Account
+        </th>
+
+    </tr>
+
+    @foreach (var item in ViewBag.PurchaseDetailList)
+    {
+        <tr>
+
+            <td>
+                @item.PurchaseId
+            </td>
+            <td>
+                @item.ItemID
+            </td>
+
+            <td>
+                @item.SizeID
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+
+            <td>
+                @item.BaseRate
+            </td>
+            <td>
+                @item.PurchaseRate
+            </td>
+            <td>
+                @item.SaleRate
+            </td>
+            <td>
+                @item.MRP
+            </td>
+
+            <td>
+                @item.GAmount
+            </td>
+            <td>
+                @item.NetAmount
+            </td>
+
+            <td>
+                @item.PurchaseAC
+            </td>
+            <td>
+                @item.PurchaseTaxAc
+            </td>
+            <td>
+                @item.SurChargeAC
+            </td>
+
+            <td>
+                @item.Tax1AC
+            </td>
+            <td>
+                @item.Tax2AC
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "EditPurchaseDetail", new { id = item.PurDetailID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PurDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PurDetailID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+        });
+    })
+
+</script>

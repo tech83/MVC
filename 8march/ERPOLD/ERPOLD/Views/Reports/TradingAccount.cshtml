@@ -1,0 +1,115 @@
+﻿@model ERPOLD.Models.ViewModel.TradingAcc
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "TRADING ACCOUNT";
+}
+
+<h2>Trading Account</h2>
+@using (Html.BeginForm("TradingAcc", "Reports", FormMethod.Post))
+{
+<table><tr>
+    <td>Item</td>
+    <td>
+        @Html.DropDownListFor(x => x.Accountid, (SelectList)ViewBag.accountidList, "-Select-")
+    </td>
+    <td></td>
+           <td>DateFrom</td>
+           <td>
+               <input id="DateFrom" name="DateFrom" placeholder="DD/MM/YYYY" type="text" value="01/04/2016">
+           </td>
+           <td></td>
+           <td>DateTo</td>
+           <td>
+               <input id="DateTo" name="DateTo" placeholder="DD/MM/YYYY" type="text" value="31/03/2017">
+           </td>
+    <td></td>
+           <td></td>
+    <td><input id="goButton" type="submit" name="name" value="GO" /></td>
+</tr></table>
+}
+<br />
+<br />
+<table border="1px"><tr><td><table id="tbl1" border="0px">
+    <tr>
+        <th width="300px">
+            Particular
+        </th>
+        <th align="right">
+            Amount
+        </th>
+
+
+
+    </tr>
+
+    @{var j = 0.0;}
+    @foreach (var item in ViewBag.LSTTA)
+    {
+        <tr>
+            <td width="300px">
+                @item.PARTICULAR
+            </td>
+            <td align="right">
+                @item.AMOUNT
+            </td>
+
+
+
+            @{j += Convert.ToDouble(item.AMOUNT);}
+
+
+        </tr>
+    }
+
+
+   
+</table></td>
+    
+    <td valign="top"><table id="tbl1" border="0px">
+    <tr>
+        <th width="300px">
+            Particular
+        </th>
+        <th align="right">
+            Amount
+        </th>
+
+
+
+    </tr>
+
+    @{var K = 0.0;}
+    @foreach (var item2 in ViewBag.LSTTAI)
+    {
+        <tr>
+            <td width="300px">
+                @item2.PARTICULAR
+            </td>
+            <td align="right">
+                @item2.AMOUNT
+            </td>
+
+
+
+            @{K += Convert.ToDouble(item2.AMOUNT);}
+
+
+        </tr>
+
+
+    }
+           
+</table></td></tr>
+    
+    <tr><td align="right">Total:@j</td><td align="right">Total:@K</td></tr></table>
+
+
+<script>
+    $(document).ready(function () {
+        $("#goButton").click(function () {
+           
+        });
+    });
+</script>
+
+

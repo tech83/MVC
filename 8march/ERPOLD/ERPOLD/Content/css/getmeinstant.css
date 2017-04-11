@@ -1,0 +1,210 @@
+.first {
+    background-color: #fe0000;
+    float: left;
+    margin: 0 auto;
+    width: 100%;
+}
+/*.firstdivbutton {
+    float: right;
+    margin: 0 auto;
+    max-width: 38%;
+	 padding-top: 3%;
+    width: 100%;
+}*/
+.firstdivbutton {
+    float: right;
+    margin: 0 auto;
+    max-width: 50%;
+    padding-top: 3%;
+    width: 100%;
+}
+.firstdivbutton ul {
+    float: right;
+    list-style-type: none;
+    margin: 0 auto;
+    padding-left: 0;
+	
+    width: 100%;
+}
+.firstdivbutton ul li {
+    background-color: #fff;
+    float: left;
+    margin: 0 auto 0 5%;
+    
+    text-align: center;
+ 
+   width: 100%;
+    max-width: 28%;
+}
+.firstdivbutton ul li a {
+    background-color: #fff;
+    float: left;
+    padding: 9%;
+	border: 1px solid #fe0000;
+    text-align: center;
+    width: 100%;
+	color:#000;
+}
+.firstdivbutton ul li a:hover
+{
+	background-color:#fe0000;
+	color:#fff;
+	border: 1px solid #fff;
+	text-decoration:none;
+}
+.checktext
+{
+	font-size: 20px;
+    font-weight: lighter;
+}
+.seconddivformouter {
+    background-color: #f0eeef;
+    float: left;
+    margin: 0 auto;
+    padding: 5%;
+    width: 100%;
+}
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: 664px;
+}
+.secondouterdiv {
+    float: left;
+    margin: 0 auto;
+    padding: 2% 0;
+    width: 100%;
+}
+.seconddivform2-2 input:first-child {
+    float: left;
+    margin-right: 10%;
+	margin-top: 2%;
+    width: 45%;
+}
+.seconddivform2-2 input:last-child {
+    float: left;
+   margin-top: 2%;
+    width: 45%;
+}
+
+.seconddivform3-2 > input {
+    margin: 2% 0;
+    width: 100%;
+}
+.seconddivform3-1 .inputsubmit {
+    background-color: #fe0000;
+    border: 1px solid #fe0000;
+    color: #fff;
+    float: left;
+    font-size: 20px;
+    padding: 3%;
+	margin-top: 15%;
+    text-align: center;
+    width: 100%;
+}
+.seconddivform6-2 > input {
+
+    max-width: 26%;
+    padding-left: 5px;
+	margin-top: 2%;
+	
+}
+.seconddivform1 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+.seconddivform2 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+.seconddivform3 {
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+    width: 100%;
+}
+.seconddivform6 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+.seconddivform4 {
+    width: 100%;
+    float: left;
+    margin: 0 auto;
+    padding-top: 3%;
+}
+.seconddivform6-2 select {
+    padding: 1%;
+	margin-top: 2%;
+}
+.seconddivform3-1 label {
+    margin-top: 4%;
+}
+.third
+{
+
+    background-color: #fe0000;
+    float: left;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.thirddiv
+{
+	text-align:center;
+	color:#fff;
+	padding:1%;
+}
+.thirddiv p
+{
+	margin-bottom:0px;
+}
+
+@media only screen and (max-width: 1200px)
+{
+	.firstdivbutton {
+    
+    padding-top: 4.2%;
+	}
+	.seconddivform3-1 label {
+    margin-top: 10%;
+	}
+	
+
+	.seconddivform3-1 .inputsubmit {
+     margin-top: 19%;
+	}
+	.firstdivbutton {
+    max-width: 44%;
+	}
+	
+}
+@media only screen and (max-width: 991px)
+{
+
+	.firstdivbutton {
+    padding-top: 5%;
+	}
+	.firstdivbutton {
+    max-width: 55%;
+	}
+}
+
+@media only screen and (max-width: 768px)
+{
+
+	.firstdivbutton ul {
+	margin-bottom:5px;
+	}
+	.seconddivform6-2 select {
+    padding: 3px;
+	}
+	
+}

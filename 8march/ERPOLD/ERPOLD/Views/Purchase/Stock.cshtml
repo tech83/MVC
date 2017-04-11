@@ -1,0 +1,152 @@
+﻿@model ERPOLD.Models.TBSTOCK
+
+@{
+    ViewBag.Title = "Stock";
+}
+
+<h2>Stock</h2>
+
+@using (Html.BeginForm("StockSaveChanges", "Purchase", FormMethod.Post))
+{
+
+    <table>
+        @Html.HiddenFor(x => x.StockID)
+        <tr>
+            <td>Item</td>
+            <td>
+               
+              @Html.DropDownListFor(x => x.ItemId, (SelectList)ViewBag.ItemMasterHeaderList, "-Select-")
+            </td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td>
+                @Html.DropDownListFor(x => x.SizeId, (SelectList)ViewBag.SizeMasterList, "-Select-")
+            </td>
+        </tr>
+       
+        <tr>
+            <td>Stock Type</td>
+            <td>
+                @Html.DropDownList("STType", new List<SelectListItem>
+                 {
+                    new SelectListItem{ Text="SALE", Value = "1" },
+                    new SelectListItem{ Text="PURCHASE", Value = "2" }
+                 })
+            </td>
+        </tr>
+
+        <tr>
+            <td>Entry Code</td>
+            <td>
+                @Html.TextBoxFor(x => x.EntryCode)
+            </td>
+        </tr>
+
+        <tr>
+            <td>FD Date</td>
+            <td>
+                @Html.TextBoxFor(x => x.FDDate)
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>
+                @Html.TextBoxFor(x => x.Quantity)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td>
+                @if (Model == null)
+                {
+                    <input type="submit" value="Create" class="btn btn-default" />
+                }
+                else
+                {
+                    <input type="submit" value="Update" class="btn btn-default" />
+                }
+                <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                <a class="btn btn-default" href='@Url.Action("PurchaseHeader", "Purchase")'>Back </a>
+            </td>
+        </tr>
+    </table>
+}
+
+<table id="tbl1" class="table" style="display:none">
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Size
+        </th>
+
+        <th>
+            Stock type
+        </th>
+        <th>
+            Entry Code
+        </th>
+        <th>
+            FD Date
+        </th>
+        <th>
+            Quantity
+        </th>
+
+    </tr>
+
+    @foreach (var item in ViewBag.StockList)
+    {
+        <tr>
+            <td>
+                @item.ItemId
+            </td>
+            <td>
+                @item.SizeId
+            </td>
+
+            <td>
+                @item.STType
+            </td>
+            <td>
+                @item.EntryCode
+            </td>
+
+            <td>
+                @item.FDDate
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "EditStock", new { id = item.StockID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StockID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StockID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+        });
+    })
+
+</script>

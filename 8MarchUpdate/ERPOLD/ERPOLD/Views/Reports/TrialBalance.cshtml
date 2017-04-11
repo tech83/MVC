@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "TrialBalance";
+}
+
+<h2>Trial Balance</h2>
+<table class="table" id="tbl1" border="1px">
+    <tr>
+        <th>
+            Account Name
+        </th>
+        <th>
+            Opening Credit
+        </th>
+
+        <th>
+            Opening Debit
+        </th>
+        <th>
+            Transact Credit
+        </th>
+        <th>
+            Transact Debit
+        </th>
+        <th>
+           Closing Credit
+        </th>
+        <th>
+            Closing Debit
+        </th>
+
+    </tr>
+
+    @foreach (var item in ViewBag.Ledger)
+    {
+        <tr>
+
+            <td>
+                @item.ACCOUNTNAME
+            </td>
+            <td>
+                @item.OpeningCredit
+            </td>
+
+            <td>
+                @item.OpeningDebit
+            </td>
+            <td>
+                @item.TransactCredit
+            </td>
+
+            <td>
+                @item.TransactDebit
+            </td>
+            <td>
+                @item.ClosingCredit
+            </td>
+            <td>
+                @item.ClosingDebit
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>

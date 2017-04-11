@@ -1,0 +1,466 @@
+﻿@model ERPOLD.Models.ViewModel.Purchase.SaleHeaderDetail
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sale";
+    var todaydate = ViewBag.Date;
+}
+<div class="sale">
+    <div class="container">
+        <div class="row">
+            <div class="saleheading"><h2>Sale</h2></div>
+
+
+
+            @using (Html.BeginForm("SaleHeaderSaveChanges", "Purchase", FormMethod.Post))
+            {
+
+                <table class="saletablesaledate">
+                    @Html.HiddenFor(x => x.SaleId)
+                    <tr>
+                        <td>Sale Date</td>
+                        <td>
+                            @*@Html.TextBoxFor(x => x.SaleDate, new { placeholder = "DD/MM/YYYY" })*@
+                            <input data-val="true" data-val-date="The field PurDate must be a date." id="SaleDate" name="SaleDate" placeholder="DD/MM/YYYY" type="text" value="@todaydate.ToString("dd/MM/yyyy")">
+                        </td>
+                    </tr>
+                    @*<tr>
+                            <td>Bill Date</td>
+                            <td>
+                                @Html.TextBoxFor(x => x.BillDate, new { placeholder = "DD/MM/YYYY" })
+                            </td>
+                        </tr>*@
+                    <tr>
+                        <td>Bill No</td>
+                        <td>@Html.TextBoxFor(x => x.BillNo, new { @style = "text-transform:uppercase" })</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Mode</td>
+                        <td>
+                            @Html.DropDownList("PaymentMode", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="Cash", Value = "0" },
+                    new SelectListItem{ Text="Credit", Value = "1" },
+                    new SelectListItem{ Text="CreditCard", Value = "2" }
+                 })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Account</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.AccountId, (SelectList)ViewBag.AccountIdList, "-Select-")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Customer</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.CustomerId, (SelectList)ViewBag.CustomerIdList, "-Select-")
+                        </td>
+                    </tr>
+
+
+
+                </table>
+
+
+                <br />
+                <table class="table" id="Table1">
+                    <tr>
+                        @*<td>Purchase</td>*@
+                        <td>Item</td>
+                        <td>Size</td>
+                        <td>Quantity</td>
+                        @*<td>Base Rate</td>
+                            <td>Purchase Rate</td>*@
+                        <td>Sale Rate</td>
+                        @*<td>MRP</td>*@
+                        <td>Cd</td>
+                        <td>Gross Amount</td>
+                        @*<td>Net Amount</td>
+                            <td>Purchase Account</td>
+                            <td>Purchase TaxAccount</td>
+                            <td>Surcharge Account</td>
+                            <td>Tax1 Account</td>
+                            <td>Tax2 Account</td>*@
+
+                    </tr>
+                    @{int j = 0;}
+                    @Html.HiddenFor(x => x.saledetail[j].SaleId)
+                    <tr>
+
+                        @*<td>
+                                @Html.DropDownListFor(x => x.TBPURCHASEDETAIL[j].PurchaseId, (SelectList)ViewBag.PurchaseIdList, "-Select-")
+                            </td>*@
+
+
+                        <td>
+                            @Html.DropDownListFor(x => x.saledetail[j].ItemId, (SelectList)ViewBag.ItemIdList, "-Select-", new { @class = "common", onchange = "GetSize(this)" })
+                        </td>
+
+
+                        <td>
+                            @Html.DropDownListFor(x => x.saledetail[j].SizeId, (SelectList)ViewBag.SizeIdList, "-Select-", new { onchange = "GetRate(this)" })
+                        </td>
+
+
+
+                        <td>
+                            @Html.TextBoxFor(x => x.saledetail[j].Quantity, new { onblur = "GetCal(this)" })
+                            @*@Html.DropDownList("PaymentMode", new List<SelectListItem>
+                                {
+                                   new SelectListItem{ Text="Cash", Value = "0" },
+                                   new SelectListItem{ Text="Credit", Value = "1" },
+                                   new SelectListItem{ Text="CreditCard", Value = "2" }
+                                })*@
+
+                        </td>
+
+
+                        @*<td>
+                                @Html.TextBoxFor(x => x.saledetail[j].BaseRate, new { onblur = "GetCal(this)" })
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].PurchaseRate)
+                            </td>*@
+
+                        <td>
+                            @Html.TextBoxFor(x => x.saledetail[j].SaleRate, new { onblur = "GetCal(this)" })
+                        </td>
+
+
+                        @*<td>
+                                @Html.TextBoxFor(x => x.saledetail[j].MRP)
+                            </td>*@
+
+                        <td>
+                            @Html.TextBoxFor(x => x.saledetail[j].Cd)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(x => x.saledetail[j].GAmount, new { @readonly = "readonly" })
+                        </td>
+
+
+                        @*<td>
+                                @Html.TextBoxFor(x => x.saledetail[j].NetAmount)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].SaleAC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].SaleTaxAC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].SurchargeAC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].Tax1AC)
+                            </td>
+
+
+                            <td>
+                                @Html.TextBoxFor(x => x.saledetail[j].Tax2AC)
+                            </td>*@
+                        <td>
+                            <input id="addButton" type="button" name="name" value="+" />
+                        </td>
+                    </tr>
+
+
+
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @if (Model == null)
+                            {
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            }
+                            else
+                            {
+                                <input type="submit" value="Update" class="btn btn-default" />
+                            }
+                            <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                            <a class="btn btn-default" href='@Url.Action("SaleHeader", "Purchase")'>New </a>
+                        </td>
+                    </tr>
+                </table>
+            }
+
+
+
+
+            <table class="table" id="tbl1" style="display:none">
+                <tr>
+                    <th>
+                        Sale Date
+                    </th>
+                    <th>
+                        Bill Date
+                    </th>
+
+                    <th>
+                        Bill No
+                    </th>
+                    <th>
+                        Payment Mode
+                    </th>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        Customer
+                    </th>
+
+                </tr>
+
+                @foreach (var item in ViewBag.SaleHeaderList)
+                {
+                    <tr>
+
+                        <td>
+                            @item.SaleDate
+                        </td>
+                        <td>
+                            @item.BillDate
+                        </td>
+
+                        <td>
+                            @item.BillNo
+                        </td>
+                        <td>
+                            @item.PaymentMode
+                        </td>
+
+                        <td>
+                            @item.AccountId
+                        </td>
+                        <td>
+                            @item.CustomerId
+                        </td>
+
+
+                        <td>
+                            @Html.ActionLink("Edit", "EditSaleHeader", new { id = item.SaleId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.SaleId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.SaleId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+        });
+        $("#SaleDate").keyup(function () {
+            if ($(this).val().length == 2 || $(this).val().length == 5) {
+                $(this).val($(this).val() + "/");
+            }
+        });
+        var id = 1;
+        $("#addButton").click(function () {
+
+            var newRow = '<tr>';
+            newRow += '<td><select data-val="true" style="width: 73px;"  id="saledetail[' + id + '].ItemId" name="saledetail[' + id + '].ItemId"  onchange="GetSize(this)"></select></td>';
+            newRow += '<td><select data-val="true" style="width: 83px;"data-val-number="The field SIZEID must be a number." id="saledetail[' + id + '].SizeId" name="saledetail[' + id + '].SizeId"  onchange="GetRate(this)"></select></td>';
+            // newRow += '<td><select data-val="true" style="width: 107px;"data-val-number="The field SIZEID must be a number." id="SIZEID' + id + '" name="purachasedetail[' + id + '].SIZEID"></select></td>';
+            newRow += '<td><input id="saledetail[' + id + '].Quantity"   name="saledetail[' + id + '].Quantity" type="text" value="" onblur="GetCal(this)"></td>';
+            // newRow += '<td><input id="saledetail[' + id + '].BaseRate"   name="saledetail[' + id + '].BaseRate" type="text" value=""  onblur="GetCal(this)"></td>';
+            // newRow += '<td><input id="saledetail[' + id + '].PurchaseRate"   name="saledetail[' + id + '].PurchaseRate" type="text" value=""></td>';
+            newRow += '<td><input id="saledetail[' + id + '].SaleRate"   name="saledetail[' + id + '].SaleRate" type="text" value="" onblur="GetCal(this)"></td>';
+            // newRow += '<td><input id="saledetail[' + id + '].MRP"   name="saledetail[' + id + '].MRP" type="text" value=""></td>';
+            newRow += '<td><input id="saledetail[' + id + '].Cd"   name="saledetail[' + id + '].Cd" type="text" value=""></td>';
+            newRow += '<td><input id="saledetail[' + id + '].GAmount"   name="saledetail[' + id + '].GAmount" type="text" value="" readonly = "readonly"></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].NetAmount"   name="saledetail[' + id + '].NetAmount" type="text" value=""></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].SaleAC"   name="saledetail[' + id + '].SaleAC" type="text" value=""></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].SaleTaxAC"   name="saledetail[' + id + '].SaleTaxAC" type="text" value=""></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].SurChargeAC"   name="saledetail[' + id + '].SurChargeAC" type="text" value=""></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].Tax1AC"   name="saledetail[' + id + '].Tax1AC" type="text" value=""></td>';
+            //newRow += '<td><input id="saledetail[' + id + '].Tax2AC"   name="saledetail[' + id + '].Tax2AC" type="text" value=""></td>';
+            newRow += ' <td> <input class="BtnMinus" type="button" name="name" value="-" /></td>';
+            newRow += ' </tr>';
+            $(newRow).appendTo($("#Table1"));
+
+
+            $.ajax({
+                url: "@Url.Action("GetSize", "Purchase")",
+                data: { Id: 0 },
+                dataType: "json",
+                type: "GET",
+                error: function () {
+                    alert(" An error occurred.");
+                },
+                success: function (data) {
+
+                    var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+
+                    $("select[name='saledetail[" + (id - 1) + "].SizeId']").append(optionhtml1);
+
+
+                    $.each(data, function (i) {
+                        var optionhtml = '<option value="' +
+                    data[i].Id + '">' + data[i].Name + '</option>';
+                        $("select[name='saledetail[" + (id - 1) + "].SizeId']").append(optionhtml);
+                    });
+                }
+            });
+            $.ajax({
+                url: "@Url.Action("GetItem", "Purchase")",
+                data: {},
+                dataType: "json",
+                type: "GET",
+                error: function () {
+                    alert(" An error occurred.");
+                },
+                success: function (data) {
+
+                    var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+                    $("select[name='saledetail[" + (id - 1) + "].ItemId']").append(optionhtml1);
+
+
+                    $.each(data, function (i) {
+                        var optionhtml = '<option value="' +
+                    data[i].ITEMID + '">' + data[i].ITEMNAME + '</option>';
+                        $("select[name='saledetail[" + (id - 1) + "].ItemId']").append(optionhtml);
+                    });
+                }
+            });
+            id = id + 1;
+
+
+        });
+
+
+        function deleteRow() {
+            var par = $(this).parent().parent();
+            par.remove();
+        };
+        $("#Table1").on("click", ".BtnMinus", deleteRow);
+
+    });
+    function GetSize(event) {
+
+        var res = $(event).attr('name');
+
+        var selected = $("select[name='" + res + "']  option:selected").val();
+
+        res = res.split('.')[0];
+        $("input[name='" + res + ".SaleRate']").val('');
+        // alert("select[name='" + res + ".SizeID']");
+        $("select[name='" + res + ".SizeId']").empty();
+        $.ajax({
+            url: "@Url.Action("GetSize", "Purchase")",
+            data: { Id: selected },
+            dataType: "json",
+            type: "GET",
+            error: function () {
+                alert(" An error occurred.");
+            },
+            success: function (data) {
+
+                var optionhtml1 = '<option value="">' + "--Select--" + '</option>';
+
+                $("select[name='" + res + ".SizeId']").append(optionhtml1);
+
+
+                $.each(data, function (i) {
+                    var optionhtml = '<option value="' +
+                data[i].Id + '">' + data[i].Name + '</option>';
+                    $("select[name='" + res + ".SizeId']").append(optionhtml);
+                });
+            }
+        });
+
+    }
+    function GetRate(event) {
+        debugger;
+        var res = $(event).attr('name');
+
+        var selectedsize = $("select[name='" + res + "']  option:selected").val();
+
+
+        res = res.split('.')[0];
+        var selecteditem = $("select[name='" + res + ".ItemId'] option:selected").val();
+
+        $.ajax({
+            url: "@Url.Action("GetRate", "Purchase")",
+            data: { itemId: selecteditem, Sizeid: selectedsize },
+            dataType: "json",
+            type: "GET",
+            error: function () {
+                alert(" An error occurred.");
+            },
+            success: function (data) {
+
+                //$("input[name='" + res + ".BaseRate']").val(data.BASICRATE);
+                //  $("input[name='" + res + ".PurchaseRate']").val(data.PURRATE);
+                $("input[name='" + res + ".SaleRate']").val(data.SALERATE);
+                //   $("input[name='" + res + ".MRP']").val(data.MRP);
+
+
+
+            }
+        });
+
+    }
+
+
+    function GetCal(event) {
+
+        var res = $(event).attr('name');
+
+        res = res.split('.')[0];
+
+        var quantity = $("input[name='" + res + ".Quantity']").val();
+        //alert(quantity);
+        var baserate = $("input[name='" + res + ".SaleRate']").val();
+        var gaamount = quantity * baserate;
+
+        $("input[name='" + res + ".GAmount']").val(gaamount);
+
+
+    }
+
+</script>
+
+
+
+

@@ -1,0 +1,155 @@
+﻿@model ERPOLD.Models.TBDEBIT
+
+@{
+    ViewBag.Title = "Debit";
+}
+
+<div class="sale">
+    <div class="container">
+        <div class="row">
+            <div class="saleheading"><h2>Debit</h2></div>
+
+
+            @using (Html.BeginForm("DebitSaveChanges", "Purchase", FormMethod.Post))
+            {
+                <table class="saletablesaledate">
+                    @Html.HiddenFor(x => x.DebitID)
+                    <tr>
+                        <td>Entry Code</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.FNEntryCode)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Stock Type</td>
+                        <td>
+                            @Html.DropDownList("STType", new List<SelectListItem>
+                 {
+                    new SelectListItem{ Text="SALE", Value = "1" },
+                    new SelectListItem{ Text="PURCHASE", Value = "2" }
+                 })
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Head Code</td>
+                        <td>
+                            @Html.DropDownListFor(x => x.HeadCode, (SelectList)ViewBag.HeadCodeList, "-Select-")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FN Amount</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.FNAmount)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>FD Date</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.FNDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.Description)
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            @if (Model == null)
+                            {
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            }
+                            else
+                            {
+                                <input type="submit" value="Update" class="btn btn-default" />
+                            }
+                            <input id="btn1" class="btn btn-default" type="button" name="name" value="Hide/Show " />
+
+                            <a class="btn btn-default" href='@Url.Action("PurchaseHeader", "Purchase")'>Back </a>
+                        </td>
+
+                    </tr>
+                </table>
+            }
+
+            <table class="table" id="tbl1" style="display:none">
+                <tr>
+                    <th>
+                        Entry Code
+                    </th>
+                    <th>
+                        Stock Type
+                    </th>
+
+                    <th>
+                        Head code
+                    </th>
+                    <th>
+                        FN Amount
+                    </th>
+                    <th>
+                        FD Date
+                    </th>
+                    <th>
+                        Description
+                    </th>
+
+                </tr>
+
+                @foreach (var item in ViewBag.debitList)
+                {
+                    <tr>
+                        <td>
+                            @item.FNEntryCode
+                        </td>
+
+                        <td>
+                            @item.STType
+                        </td>
+                        <td>
+                            @item.HeadCode
+                        </td>
+                        <td>
+                            @item.FNAmount
+                        </td>
+                        <td>
+                            @item.FNDate
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "EditDebit", new { id = item.DebitID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.DebitID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.DebitID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            if ($('#tbl1').css('display') == 'block') {
+                $("#tbl1").css('display', 'none')
+            }
+            else {
+                $("#tbl1").css('display', 'block')
+            }
+        });
+    })
+
+</script>

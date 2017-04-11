@@ -1,0 +1,128 @@
+﻿@model ERPOLD.Models.TBACCOUNTMASTER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TBACCOUNTMASTER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OPENING_BALANCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OPENING_BALANCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OPENINGTYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OPENINGTYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TINNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILENO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILENO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBACCOUNTTYPEMASTER.ACCOUNTTYPENAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBACCOUNTTYPEMASTER.ACCOUNTTYPENAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBBALANCESHEETGROUP.BALANCESHEETGROUPNM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBBALANCESHEETGROUP.BALANCESHEETGROUPNM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBBALANCESHEETGROUP1.BALANCESHEETGROUPNM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBBALANCESHEETGROUP1.BALANCESHEETGROUPNM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBACCOUNTMASTER1.OPENINGTYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBACCOUNTMASTER1.OPENINGTYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TBACCOUNTMASTER2.OPENINGTYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TBACCOUNTMASTER2.OPENINGTYPE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
